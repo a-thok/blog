@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<%- include _head.ejs   %>
+  <title>A Talk To Me</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<%- include _header.ejs   %>
+
+  <section class="page-body">
+    <main class="page-content">
+    <%_ posts.forEach(post => { _%>
+      <article class="article">
+        <h2 class="article-title"><%= post.title %></h2>
+        <div class="article-meta">
+          <time><%= post.date %></time>
+          <%_ post.tags.forEach(tag => { -%><a href="/?page=1&tag=<%= tag %>"><%= tag %></a><%_ }); -%>
+        </div>
+        <div class="article-content">
+          <%- post.content %>
+        </div>
+        <a class="article-more" href="/post/<%= post.name %>">阅读全文</a>
+      </article>
+    <%_ }); _%>
+    </main>
+
+<%- include _aside.ejs   %>
+  </section>
+
+<%- include _worker.ejs   %>
+</body>
+</html>

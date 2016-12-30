@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<%- include _head.ejs   %>
+  <title><%= post.title %> - A Talk To Me</title>
+  <link rel="stylesheet" href="https://cdn.bootcss.com/prism/1.6.0/themes/prism-okaidia.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<%- include _header.ejs   %>
+
+  <section class="page-body">
+    <main class="page-content">
+      <article class="article">
+        <h2 class="article-title"><%= post.title %></h2>
+        <div class="article-meta">
+          <time><%= post.date %></time>
+          <%_ post.tags.forEach(tag => { -%><a href="/?page=1&tag=<%= tag %>"><%= tag %></a><%_ }); -%>
+        </div>
+        <div class="article-read">
+          <button class="form">朗读文章</button>
+        </div>
+        <div class="article-content">
+          <%- post.content %>
+        </div>
+      </article>
+      <div id="disqus_thread"></div>
+    </main>
+
+<%- include _aside.ejs   %>
+  </section>
+
+<%- include _worker.ejs   %>
+  <script src="/js/speak.js" defer></script>
+  <script src="https://cdn.bootcss.com/prism/1.6.0/prism.min.js" defer></script>
+  <script defer>
+    // var disqus_config = function () {
+    // this.page.url = '/post/<%= post.name %>';
+    // this.page.identifier = '<%= post.title %>';
+    // };
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = '//atalktome.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+  </script>
+</body>
+</html>
