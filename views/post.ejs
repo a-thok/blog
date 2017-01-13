@@ -14,11 +14,13 @@
       <article class="article">
         <h2 class="article-title"><%= post.title %></h2>
         <div class="article-meta">
-          <time><%= post.date %></time>
-          <%_ post.tags.forEach(tag => { -%><a href="/?page=1&tag=<%= tag %>"><%= tag %></a><%_ }); -%>
-        </div>
-        <div class="article-read">
-          <button class="form">朗读文章</button>
+          <time class="article-time"><%= post.date %></time>
+          <ul class="article-tags">
+            <%_ post.tags.forEach(tag => { -%>
+            <li class="article-tag"><a href="/?page=1&tag=<%= tag %>"><%= tag %></a></li>
+            <%_ }); -%>
+          </ul>
+          <button class="article-speak form-control">朗读文章</button>
         </div>
         <div class="article-content">
           <%- post.content %>

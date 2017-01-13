@@ -24,7 +24,7 @@ body {
   margin: 0;
   /*background-color: #f9f9f3;*/
   color: var(--black);
-  font-family: 'San Francisco', Helvetica, Arial, 'Microsoft Yahei', 'PingFang SC', 'Heiti SC', sans-serif;
+  font-family: "San Francisco", Helvetica, Arial, "Microsoft Yahei", "PingFang SC", "Heiti SC", sans-serif;
 }
 
 input, textarea, select, button {
@@ -60,7 +60,7 @@ pre *::selection {
 }
 
 code {
-  font-family: Consolas, Monaco, 'Courier New', 'Andale Mono', 'Ubuntu Mono', 'Microsoft Yahei', monospace !important;
+  font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, "Microsoft Yahei", monospace !important;
 }
 
 code[class*="language-"] {
@@ -69,21 +69,21 @@ code[class*="language-"] {
 }
 
 /* form */
-.form {
+.form-control {
   padding: 0.4em 0.6em;
-  border: 1px solid var(--grey);
+  border: 1px solid currentColor;
   border-radius: 0.25em;
-  color: var(--grey-dark);
+  color: var(--theme-light);
 }
 
-button.form {
+button.form-control {
   background-color: #fff;
   cursor: pointer;
   transition: color 0.3s;
 }
 
-button.form:hover {
-  color: inherit;
+button.form-control:hover {
+  color: var(--theme);
 }
 
 /*
@@ -99,7 +99,7 @@ button.form:hover {
   margin: 0;
   padding: 0.6em 0;
   font-size: 2rem;
-  font-family: 'Microsoft Jhenghei';
+  font-family: "Microsoft Jhenghei";
   text-align: center;
 }
 
@@ -114,11 +114,11 @@ button.form:hover {
 .page-header h1 rt {
   font-weight: normal;
   font-size: 0.375em;
-  font-family: 'Segoe UI', 'Trebuchet MS', 'Lucida Sans Unicode', sans-serif;
+  font-family: "Segoe UI", "Trebuchet MS", "Lucida Sans Unicode", sans-serif;
 }
 
 .page-header h1 .tailo {
-  font-family: 'Microsoft Yahei' sans-serif;
+  font-family: "Microsoft Yahei" sans-serif;
   position: absolute;
   top: 0;
   left: 50%;
@@ -182,34 +182,42 @@ button.form:hover {
 
 /* title */
 .article-title {
-  margin: 0 0 .25em;
+  margin: 0;
   color: var(--theme);
   font-size: 1.375em;
 }
 
 /* meta */
 .article-meta {
-  /*color: #93abb3;*/
-  color: var(--grey);
+  display: flex;
+  margin-top: 0.6em;
+  align-items: center;
   font-size: 0.875em;
 }
 
-.article-meta time {
+.article-time {
   margin-right: .5em;
+  color: var(--grey);
 }
 
-.article-meta a {
+.article-tags {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  flex: 1;
+}
+
+.article-tag {
+  display: inline-block;
+}
+
+.article-tag a {
   margin-right: 0.5em;
 }
 
-/* read */
-.article-read {
-  margin-top: 1em;
+.article-speak {
   font-size: 0.75rem;
-  text-align: right;
-}
-
-.article-read button {
   margin-left: 1em;
 }
 
@@ -304,4 +312,12 @@ button.form:hover {
 .page-aside {
   float: right\0;
   width: 250px\0;
+}
+
+.article-tags {
+  display: inline-block\0;
+}
+
+.article-speak {
+  float: right\0;
 }
