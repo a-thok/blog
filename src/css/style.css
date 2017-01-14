@@ -262,6 +262,19 @@ button.form-control:hover {
   font-size: 1.2857142857142858em;
 }
 
+.page-aside-panel dt {
+  color: var(--theme);
+}
+
+.page-aside-panel dd {
+  display: inline-block;
+  margin-left: 0;
+}
+
+.page-aside-panel dd:not(:last-child)::after {
+  content: ", ";
+}
+
 /*
  * RESPONSIVE
  */

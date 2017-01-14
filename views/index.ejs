@@ -8,29 +8,29 @@
 <body>
 <%- include _header.ejs   %>
 
-  <section class="page-body">
+  <div class="page-body">
     <main class="page-content">
     <%_ posts.forEach(post => { _%>
       <article class="article">
         <h2 class="article-title"><%= post.title %></h2>
-        <div class="article-meta">
+        <section class="article-meta">
           <time class="article-time"><%= post.date %></time>
           <ul class="article-tags">
             <%_ post.tags.forEach(tag => { -%>
             <li class="article-tag"><a href="/?page=1&tag=<%= tag %>"><%= tag %></a></li>
             <%_ }); -%>
           </ul>
-        </div>
-        <div class="article-content">
+        </section>
+        <section class="article-content">
           <%- post.content %>
-        </div>
+        </section>
         <a class="article-more" href="/post/<%= post.name %>">阅读全文</a>
       </article>
     <%_ }); _%>
     </main>
 
 <%- include _aside.ejs   %>
-  </section>
+  </div>
 
 <%- include _worker.ejs   %>
 </body>
