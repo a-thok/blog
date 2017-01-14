@@ -29,6 +29,15 @@ const markPost = (post, slice = false) => {
   });
 };
 
+server.use((req, res, next) => {
+  res.set({
+    'X-Content-Type-Options': 'nosniff',
+    'X-Frame-Options': 'DENY',
+    'X-XSS-Protection': '1; mode=block',
+  });
+  return next();
+});
+
 server.get('/', (req, res) => {
   const PER_PAGE = 10;
   const { p, tag } = req.query;
@@ -38,7 +47,7 @@ server.get('/', (req, res) => {
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(startIndex, startIndex + PER_PAGE);
 
-  res.render('index', {
+  return res.render('index', {
     posts: result.map(post => markPost(post, true)),
   });
 });
@@ -47,7 +56,7 @@ server.get('/post/:name', (req, res) => {
   const { name } = req.params;
   const result = posts.find(post => post.name === name);
 
-  res.render('post', {
+  return res.render('post', {
     post: markPost(result),
   });
 });
