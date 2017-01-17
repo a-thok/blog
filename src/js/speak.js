@@ -1,8 +1,10 @@
 const $ = (selector, context = document) => context.querySelector(selector);
 
-const readBtn = $('.article-speak');
 
 if ('speechSynthesis' in window) {
+  const readBtn = $('.article-speak');
+  readBtn.removeAttribute('hidden');
+
   const articleText = $('.article-content').textContent;
   const changeBtnText = (text) => { readBtn.textContent = text; };
 
@@ -90,10 +92,5 @@ if ('speechSynthesis' in window) {
   // so I've to cancel it manually
   window.addEventListener('beforeunload', () => {
     speechSynthesis.cancel();
-  });
-} else {
-  readBtn.addEventListener('click', () => {
-    /* eslint-disable no-alert */
-    alert('抱歉，您的浏览器不支持此功能');
   });
 }
