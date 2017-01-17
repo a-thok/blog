@@ -63,6 +63,14 @@ code {
   font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, "Microsoft Yahei", monospace !important;
 }
 
+p > code {
+  padding: 1px 3px;
+  border-radius: 0.25em;
+  margin: 0 0.25em;
+  background-color: var(--grey-light);
+  font-size: 0.9375em;
+}
+
 code[class*="language-"] {
   color: #ecf0f1;
   font-size: 0.875em;
