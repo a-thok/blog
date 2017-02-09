@@ -3,7 +3,7 @@
 <head>
 <%- include _head.ejs   %>
   <title><%= post.title %> - A Talk To Me</title>
-  <link rel="stylesheet" href="https://cdn.bootcss.com/prism/1.6.0/themes/prism-okaidia.min.css">
+  <link rel="stylesheet" href="/lib/prism.css">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -34,7 +34,7 @@
 
 <%- include _worker.ejs   %>
   <script src="/js/speak.js" defer></script>
-  <script src="https://cdn.bootcss.com/prism/1.6.0/prism.min.js" defer></script>
+  <script src="/lib/prism.js" defer></script>
   <script defer>
     // var disqus_config = function () {
     // this.page.url = '/post/<%= post.name %>';
