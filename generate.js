@@ -10,7 +10,7 @@ const getPostData = (filename, postStr) => {
     title: matches[1],
     date: matches[2],
     tags: matches[3].split(','),
-    content: matches[4].replace(/(<code class="language-.*">)\s*/g, '$1'),
+    content: matches[4],
   };
 };
 
