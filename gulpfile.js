@@ -1,4 +1,5 @@
 const gulp = require('gulp');
+const del = require('del');
 const browserSync = require('browser-sync').create();
 const plumber = require('gulp-plumber');
 const gulpif = require('gulp-if');
@@ -13,6 +14,8 @@ const cleanCSS = require('gulp-clean-css');
 
 const isProd = process.env.NODE_ENV === 'production';
 const sourcemapType = isProd ? './' : null;
+
+gulp.task('clean', () => del(['./public/js/*', './public/css/*'], { force: true }));
 
 gulp.task('js', () => (
   gulp.src('./src/js/*.js')
@@ -40,7 +43,7 @@ gulp.task('css', () => (
     .pipe(gulpif(!isProd, browserSync.stream()))
 ));
 
-gulp.task('server', ['js', 'css'], () => {
+gulp.task('server', ['clean', 'js', 'css'], () => {
   browserSync.init({
     proxy: 'http://127.0.0.1:4000/',
   });
@@ -51,4 +54,4 @@ gulp.task('server', ['js', 'css'], () => {
 
 gulp.task('default', ['server']);
 
-gulp.task('build', ['js', 'css']);
+gulp.task('build', ['clean', 'js', 'css']);
