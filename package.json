@@ -20,7 +20,7 @@
     "eslint-plugin-import": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-buble": "^0.8.0",
-    "gulp-clean-css": "^2.3.2",
+    "gulp-clean-css": "^3.0.2",
     "gulp-if": "^2.0.2",
     "gulp-plumber": "^1.1.0",
     "gulp-postcss": "^6.3.0",
@@ -33,11 +33,10 @@
   "scripts": {
     "server": "node server",
     "data": "node generate",
-    "asset": "cross-env NODE_ENV=production gulp build",
-    "asset:test": "gulp",
-    "build": "npm run asset & npm run data",
-    "start": "cross-env NODE_ENV=production npm run server",
-    "dev": "npm run data & npm-run-all -p asset:test server"
+    "build": "cross-env NODE_ENV=production gulp",
+    "build:test": "gulp dev-server",
+    "start": "npm run data & cross-env NODE_ENV=production npm run server",
+    "dev": "npm run data & npm-run-all -p build:test server"
   },
   "keywords": [],
   "author": "",

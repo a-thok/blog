@@ -43,15 +43,15 @@ gulp.task('css', () => (
     .pipe(gulpif(!isProd, browserSync.stream()))
 ));
 
-gulp.task('server', ['clean', 'js', 'css'], () => {
+gulp.task('dev-server', ['clean', 'js', 'css'], () => {
   browserSync.init({
     proxy: 'http://127.0.0.1:4000/',
+    notify: false,
+    browser: [],
   });
 
   gulp.watch('./src/js/*.js', ['js']);
   gulp.watch('./src/css/*.css', ['css']);
 });
 
-gulp.task('default', ['server']);
-
-gulp.task('build', ['clean', 'js', 'css']);
+gulp.task('default', ['clean', 'js', 'css']);
