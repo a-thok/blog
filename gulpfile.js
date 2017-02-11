@@ -37,7 +37,9 @@ gulp.task('css', () => (
       cssVariables(),
       pixrem(),
     ]))
-    .pipe(gulpif(isProd, cleanCSS()))
+    .pipe(gulpif(isProd, cleanCSS({
+      compatibility: 'ie8',
+    })))
     .pipe(sourcemaps.write(sourcemapType))
     .pipe(gulp.dest('./public/css'))
     .pipe(gulpif(!isProd, browserSync.stream()))
