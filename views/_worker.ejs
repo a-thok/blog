@@ -1,8 +1,8 @@
   <script>
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
+      window.addEventListener('load', function() {
         navigator.serviceWorker.register('/sw.js')
-          .catch(error => console.log(error));
+          .catch(function (error) { console.log(error); });
       });
     }
   </script>
