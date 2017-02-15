@@ -25,7 +25,7 @@ const markPost = (post, slice = false) => {
   const content = neededSlice ? `${post.content.slice(0, 150)}...` : post.content;
 
   return Object.assign({}, post, {
-    content: marked(content, { sanitize: slice }),
+    content: marked(content, { sanitize: true }),
   });
 };
 
