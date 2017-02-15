@@ -176,6 +176,7 @@ button.form-control:hover {
 .page-content {
   width: 100%;
   max-width: 768px;
+  min-width: 0;
 }
 
 /* ARTICLE */
