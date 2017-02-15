@@ -17,43 +17,43 @@ Speech Synthesis在全局暴露了两个接口，分别是`window.SpeechSynthesi
 
 `SpeechSynthesisUtterance`是一个构造函数，用来生成语音实例。它接收一个字符串参数，即将要被转换成语音的文本内容：
 
-<pre><code class="language-javascript">
+```javascript
 const utterance = new SpeechSynthesisUtterance('Hello World');
-</code></pre>
+```
 
 此参数并不是必须的，你也可以像下面这样做：
 
-<pre><code class="language-javascript">
+```javascript
 const utterance = new SpeechSynthesisUtterance();
 utterance.text = 'Hello World';
-</code></pre>
+```
 
 除了`text`以外，`SpeechSynthesisUtterance`的实例还提供了其它的一些属性让开发者控制合成语音的细节，比如音量、语速等。
 
-<pre><code class="language-javascript">
+```javascript
 utterance.lang = 'zh-CN'; // 语种，默认等同于html标签的lang属性，如果此属性未设置，则等同于用户代理（浏览器）的设置
 utterance.pitch = 1; // 音高，0 - 1，默认1
 utterance.rate = 0.95; // 语速，0.1 - 10，默认1
 utterance.volumn = 1; // 音量，0 - 1，默认1
-</code></pre>
+```
 
 我们还可以监听实例的状态变化：
 
-<pre><code class="language-javascript">
+```javascript
 utterance.addEventListener('start', () => console.log('语音朗读已开始'));
 utterance.addEventListener('end', () => console.log('语音朗读已结束'));
-</code></pre>
+```
 
 #### window.speechSynthesis
 
 生成并配置好语音实例后，我们使用`speechSynthesis`来调用设备的语音服务。
 
-<pre><code class="language-javascript">
+```javascript
 speechSynthesis.speak(utterance); // 开始朗读
 speechSynthesis.pause(); // 暂停朗读
 speechSynthesis.resume(); // 恢复朗读
 speechSynthesis.cancel(); // 停止朗读
-</code></pre>
+```
 
 多次调用`speak`将形成一个朗读队列，前一个实例朗读完成后继续朗读下一个实例。  
 一个设备上同一时间只能有一个实例正在朗读，因此`pause`与`resume`不需要指定参数，它们操作当前正在朗读的那个实例。  
@@ -64,10 +64,10 @@ speechSynthesis.cancel(); // 停止朗读
 
 我们还可以通过speechSynthesis.getVoices方法获取当前设备上可用的声音，它返回一个数组。
 
-<pre><code class="language-javascript">
+```javascript
 const voices = speechSynthesis.getVoices();
 utterance.voice = voices[0]; // 声音，默认将根据lang属性的值自动选择合适的声音
-</code></pre>
+```
 
 ### 实践
 
@@ -79,7 +79,7 @@ utterance.voice = voices[0]; // 声音，默认将根据lang属性的值自动�
 这个过程在桌面设备上比较短暂，但在性能相对较差的移动设备上，则会耗费相当的时间。我没有特地计算，但在我自己的*Lumia 830*上，朗读一段2000字左右的文章，感觉上至少等待了半分钟。这样的时长显然是不理想的，在等待过程中，用户可能会以为这个操作根本没有效果。因此需要在视图上给予用户某种形式的反馈，让用户知悉该操作的进度。  
 在这个博客里，我采用的方式是改变操作按钮的文本。
 
-<pre><code class="language-javascript">
+```javascript
 // ......
 
 const changeBtnText = text => readBtn.textContent = text;
@@ -95,7 +95,7 @@ readBtn.addEventListener('click', () => {
   changeBtnText('处理中...');
   window.speechSynthesis.speak(utterance);
 });
-</code></pre>
+```
 
 #### 声音选择
 
@@ -103,7 +103,7 @@ readBtn.addEventListener('click', () => {
 如果想让用户选择自己喜欢的声音，可以将声音列表以下拉框的形式呈现给用户，根据用户的选择去改变`voice`属性。  
 一个奇怪的问题是，同一台设备，我在*Opera（Blink）*下取到的声音列表是空的，但在*Edeg*下可以正常取到列表。因此这里多做了一个判断，只有取得到列表时才进行相应的操作。
 
-<pre><code class="language-javascript">
+```javascript
 const voices = window.speechSynthesis.getVoices()
   .filter(voice => voice.lang === 'zh-CN');
 
@@ -124,13 +124,13 @@ if (voices.length) {
 
   // .......
 }
-</code></pre>
+```
 
 用户可能会在朗读开始之前或朗读过程之中选择改变声音。后一种情况稍微复杂一些。  
 我原本的想法是，若改变声音时已经在朗读，就进行这样的三步操作：暂停朗读、改变`voice`、恢复朗读。但这个想法显然太乐观了。实践的结果是，语音实例一旦进入朗读队列，再去改变实例的属性并不会影响朗读的效果。  
 因此只能把队列清空，再把改变后的实例重新插入队列。这样会导致原本朗读到一半的文本必须从头开始朗读，但我暂时没有找到更好的办法。
 
-<pre><code class="language-javascript">
+```javascript
 if (voices.length) {
   // ......
 
@@ -153,7 +153,7 @@ if (voices.length) {
 
   // ......
 }
-</code></pre>
+```
 
 #### 非纯文本
 

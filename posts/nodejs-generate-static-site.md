@@ -38,7 +38,7 @@
 2. 我将事先拥有一个HTML模板，这个模板包含了文章以外的内容，这些内容对于每个文章页面都是不变的
 3. 我会使用一个第三方的工具来做Markdown到HTML的转换，把转换后的内容插入模板内，在预定的目录里写入一个对应的HTML文件
 
-<pre><code class="language-javascript">
+```javascript
 const fs = require('fs');
 const path = require('path');
 const marked = require('marked');
@@ -53,7 +53,7 @@ filenames.forEach((filename) => {
   const html = template.replace(/\{post\}/, postHTML); // 这里只是简单地查找替换，更复杂的情况可以使用成熟的第三方模板
   fs.writeFileSync('/path/to/html', html);
 });
-</code></pre>
+```
 
 为了便于阅读，上面代码里涉及到文件操作的，都使用了同步的方式。  
 这样短短的一段代码就已经能基本实现我们所设想的功能了。
@@ -61,7 +61,7 @@ filenames.forEach((filename) => {
 不过这里有一个问题是，除了文章详情页，我们的博客还需要每一页的文章列表。另外，我这个博客的列表页还有用标签筛选的功能。  
 我们当然可以编写额外的代码来生成这些列表页面，但文章和标签一多的话，这种做法感觉上就有点累赘。想来想去，最后我决定把Markdonw文件里提取出的内容以数组的形式写入一个json文件里，而不是直接生成HTML文件。生成HTML文件的步骤可以放到服务器的请求里。
 
-<pre><code class="language-javascript">
+```javascript
 // ...
 
 const posts = JSON.parse(
@@ -83,14 +83,14 @@ server.get('/', (req, res) => {
     posts: result.map(post => markPost(post, true)),
   });
 });
-</code></pre>
+```
 
 由于我在列表页必须显示文章的摘要，因此Markdown到HTML的转换（markPost）也放到服务器请求里操作。
 
 实际代码里我们应用使用异步的方式来操作文件读写，这样性能更好。  
 这里我使用Promise封装Node.js的原生方法，然后使用Promise.all来控制流程。完整的代码如下：
 
-<pre><code class="language-javascript">
+```javascript
 const fs = require('fs');
 const path = require('path');
 
@@ -133,4 +133,4 @@ Promise.all(
     );
   })
   .catch(error => console.log(error));
-</code></pre>
+```

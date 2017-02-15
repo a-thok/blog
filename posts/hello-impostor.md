@@ -40,6 +40,6 @@
 
 但我真的很开心我成为了一个程序员，从事着我非常热爱的事情。所以，最后还是要对今天的自己说一声：
 
-<pre><code class="language-javascript">
+```javascript
 console.log('你好，骗子');
-</code></pre>
+```
