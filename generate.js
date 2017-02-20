@@ -4,14 +4,12 @@ const path = require('path');
 const POST_DIR_PATH = path.join(__dirname, 'posts');
 
 const getPostData = (filename, postStr) => {
-  const matches = postStr.match(/%TITLE\s*(.*)\s*%DATE(.*)\s*%TAGS\s*(.*)\s*([\s\S]*)/);
-  return {
+  const matches = postStr.match(/---([\s\S]+)---\s+([\s\S]+)/m);
+  const meta = JSON.parse(matches[1]);
+  return Object.assign(meta, {
     name: path.basename(filename, '.md'),
-    title: matches[1],
-    date: matches[2],
-    tags: matches[3].split(','),
-    content: matches[4],
-  };
+    content: matches[2],
+  });
 };
 
 const readPost = filename => new Promise((resolve, reject) => {
