@@ -1,9 +1,9 @@
-const CACHE_NAME = 'A-TALK-TO-ME-V1';
+const CACHE_NAME = 'A-TALK-TO-ME-V2';
 const urlsToCache = [
-  '/posts',
-  '/posts?json=true',
+  '/',
   '/style.css',
   '/app.js',
+  '/icons.svg',
 ];
 
 self.addEventListener('install', (event) => {
@@ -11,6 +11,7 @@ self.addEventListener('install', (event) => {
     caches
       .open(CACHE_NAME)
       .then(cache => cache.addAll(urlsToCache))
+      .then(() => self.skipWaiting())
   );
 });
 
@@ -22,6 +23,7 @@ self.addEventListener('activate', (event) => {
           .filter(key => key !== CACHE_NAME)
           .map(key => caches.delete(key))
       ))
+      .then(() => self.clients.claim())
   );
 });
 
@@ -35,7 +37,7 @@ self.addEventListener('fetch', (event) => {
 
   const cacheTheResponse = (res) => {
     // don't need to cache response if the request is failed
-    if (!res || res.status !== 200 || res.type !== 'basic') {
+    if (!res || res.status !== 200) {
       return res;
     }
 
@@ -74,8 +76,3 @@ self.addEventListener('fetch', (event) => {
       })
   );
 });
-
-// self.addEventListener('message', (event) => {
-//   console.log('hi');
-//   event.ports[0].postMessage('back');
-// });
