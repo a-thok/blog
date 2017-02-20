@@ -1,8 +1,5 @@
 {
-  "extends": "airbnb-base",
-  "plugins": [
-    "import"
-  ],
+  "extends": "airbnb",
   "env": {
     "browser": true
   },
@@ -14,6 +11,10 @@
       "imports": "always-multiline",
       "exports": "always-multiline",
       "functions": "never"
-    }]
+    }],
+    "react/prop-types": 0,
+    "react/no-danger": 0,
+    "react/sort-comp": 0,
+    "react/no-did-mount-set-state": 0
   }
 }
