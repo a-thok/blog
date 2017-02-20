@@ -43,7 +43,6 @@ module.exports = {
           }),
           postcssVariables(),
           pixrem(),
-          colorFunction(),
         ],
         context: __dirname,
       },
