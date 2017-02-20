@@ -1,3 +1,5 @@
 /node_modules/
+/dist/
+/server.js
+/posts.json
 *.log
-/.vscode/
