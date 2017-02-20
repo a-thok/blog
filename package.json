@@ -1,6 +1,9 @@
 {
-  "name": "blog-inferno",
+  "name": "blog",
   "version": "1.0.0",
+  "engines": {
+    "node": "7.5.0"
+  },
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -16,26 +19,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "autoprefixer": "^6.7.3",
-    "babel-core": "^6.23.1",
-    "babel-loader": "^6.3.2",
-    "babel-plugin-inferno": "^1.9.0",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "buble-loader": "^0.4.0",
-    "concurrently": "^3.3.0",
-    "css-loader": "^0.26.1",
     "eslint": "^3.15.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.0",
-    "extract-text-webpack-plugin": "^2.0.0-rc.3",
-    "pixrem": "^3.0.2",
-    "postcss-css-variables": "^0.6.0",
-    "postcss-import": "^9.1.0",
-    "postcss-loader": "^1.3.1",
-    "style-loader": "^0.13.1",
-    "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.1"
   },
   "dependencies": {
@@ -49,6 +37,21 @@
     "inferno-server": "^1.3.0-rc.3",
     "marked": "^0.3.6",
     "normalize.css": "^5.0.0",
-    "prismjs": "^1.6.0"
+    "prismjs": "^1.6.0",
+    "autoprefixer": "^6.7.3",
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-plugin-inferno": "^1.9.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "buble-loader": "^0.4.0",
+    "concurrently": "^3.3.0",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^2.0.0-rc.3",
+    "pixrem": "^3.0.2",
+    "postcss-css-variables": "^0.6.0",
+    "postcss-import": "^9.1.0",
+    "postcss-loader": "^1.3.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^2.2.1"
   }
 }

@@ -5,7 +5,6 @@ const postcssImport = require('postcss-import');
 const autoprefixer = require('autoprefixer');
 const postcssVariables = require('postcss-css-variables');
 const pixrem = require('pixrem');
-const colorFunction = require('postcss-color-function');
 
 module.exports = {
   entry: {
