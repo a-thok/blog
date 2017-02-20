@@ -31,7 +31,7 @@ Promise.all(
 )
   .then((posts) => {
     fs.writeFileSync(
-      path.resolve(__dirname, 'posts.json'),
+      path.resolve(__dirname, 'data/posts.json'),
       JSON.stringify(posts, null, 2)
     );
   });

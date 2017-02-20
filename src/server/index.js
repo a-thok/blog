@@ -6,10 +6,10 @@ const compression = require('compression');
 const { markPost, handleRequest } = require('./utils');
 
 const sentenceData = JSON.parse(
-  fs.readFileSync(path.join(process.cwd(), 'sentences.json'), 'utf-8')
+  fs.readFileSync(path.join(process.cwd(), 'data/sentences.json'), 'utf-8')
 );
 const postData = JSON.parse(
-  fs.readFileSync(path.join(process.cwd(), 'posts.json'), 'utf-8')
+  fs.readFileSync(path.join(process.cwd(), 'data/posts.json'), 'utf-8')
 );
 
 const server = express();
