@@ -1,0 +1,77 @@
+.app-main {
+  width: 100%;
+  max-width: 768px;
+  padding: 0 1em;
+  margin: 2.5em auto 0;
+}
+
+@supports (display: grid) {
+  .app {
+    display: grid;
+    grid-template-areas: "header" "main";
+    grid-template-rows: auto 1fr;
+    grid-template-columns: auto;
+    justify-items: center;
+    min-height: 100vh;
+  }
+
+  .app-header {
+    grid-area: header;
+  }
+
+  .app-main {
+    grid-area: main;
+  }
+}
+
+/*
+ * OFF LINE
+ */
+.offline-tip {
+  display: none;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 0.6em 0;
+  background-color: var(--emphasis);
+  color: #fff;
+  font-size: 0.875em;
+  text-align: center;
+}
+
+.offline .offline-tip {
+  display: block;
+}
+
+/*
+ * FETCHING
+ */
+.fetching {
+  color: var(--emphasis);
+  text-align: center;
+}
+
+
+/* IE8 & IE9 */
+/*.page-body {
+  width: 1024px\0;
+}
+
+.page-content {
+  float: left\0;
+  width: 684px\0;
+}
+
+.page-aside {
+  float: right\0;
+  width: 250px\0;
+}
+
+.article-tags {
+  display: inline-block\0;
+}
+
+.article-speak {
+  float: right\0;
+}*/

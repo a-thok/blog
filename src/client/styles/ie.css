@@ -1,0 +1,140 @@
+.ie .app-header {
+  overflow: hidden;
+}
+
+.ie .app-title {
+  float: left;
+}
+
+.ie .app-nav {
+  float: right;
+  margin-top: 28px;
+}
+
+.ie .app-nav a {
+  margin-left: 1.375em;
+}
+
+.ie .app-nav a:first-child {
+  margin-left: 0;
+}
+
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .app-main.blog {
+    height: 756px;
+  }
+}
+
+.ie .article-list {
+  font-size: 1.125em;
+}
+
+.ie .article-item {
+  overflow: hidden;
+  height: 130px;
+  margin-top: -30px;
+}
+
+.ie .article-item-left {
+  width: 10em;
+  height: 100%;
+  float: left;
+}
+
+.ie .article-item-left time {
+  float: left;
+  position: relative;
+  top: 60px;
+}
+
+.article-item-left time {
+  display: block\0;
+}
+
+.ie .article-item-left::after {
+  position: relative;
+  width: 2px;
+  height: 100%;
+  float: right;
+}
+
+.ie .article-item-right {
+  float: left;
+  height: 100%;
+  padding-left: 4.6em;
+}
+
+.ie .article-item-right h2 {
+  position: relative;
+  top: 58px;
+}
+
+.ie .article-item-title::after {
+  top: 75px;
+  left: -1px;
+}
+
+.article-item-title::after {
+  left: 1px\9;
+}
+
+
+.ie .article-list-pager {
+  text-align: right;
+}
+
+.ie .article-list-pager a {
+  display: inline-block;
+  text-align: center;
+}
+
+.ie .article-list-prev {
+  line-height: 3.4rem;
+}
+
+.ie .article-list-next {
+  line-height: 6rem;
+}
+
+
+.ie .about-skills {
+  overflow: hidden;
+}
+
+.ie .about-skills dl {
+  width: 25%;
+  float: left;
+}
+
+
+.ie .article-title {
+  text-align: center;
+}
+
+.ie .article-meta {
+  text-align: center;
+}
+
+.ie .article-meta * {
+  vertical-align: middle;
+}
+
+.ie .article-meta img {
+  width: 1em !important;
+  height: 1em !important;
+}
+
+.ie .article-tags,
+.ie .article-tags li {
+  display: inline-block;
+}
+
+.ie .article-content pre {
+  background-color: #272822;
+}
+
+.ie .sentence-quote {
+  transform: translateY(-50%);
+  margin-left: -384px\0/;
+}

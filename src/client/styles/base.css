@@ -1,0 +1,37 @@
+html {
+  box-sizing: border-box;
+  line-height: 1.5;
+}
+
+*, ::before, ::after {
+  box-sizing: inherit;
+}
+
+body {
+  color: #333;
+  font-family: "Raleway", "Microsoft Yahei", "PingFang SC", "Heiti SC", sans-serif;
+}
+
+input, textarea, select, button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+code {
+  font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, "Microsoft Yahei", monospace !important;
+}
+
+svg {
+  width: 1em;
+  height: 1em;
+}
+
+.btn {
+  padding: 0.36em 0.6em;
+  border: 0;
+  border-radius: 1px;
+  outline: 0;
+  background-color: var(--theme);
+  color: #fff;
+  cursor: pointer;
+}

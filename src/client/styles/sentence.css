@@ -1,0 +1,30 @@
+.sentence-quote {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 768px;
+  max-width: 80%;
+  margin: 0;
+  font-size: 1.125rem;
+}
+
+.sentence-quote::before,
+.sentence-quote::after {
+  color: var(--theme);
+  font-weight: bold;
+}
+
+.sentence-quote::before {
+  position: absolute;
+  top: -0.5em;
+  left: -1.5em;
+  content: "「";
+}
+
+.sentence-quote::after {
+  position: absolute;
+  right: -1.5em;
+  bottom: -0.5em;
+  content: "」";
+}

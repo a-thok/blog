@@ -1,10 +1,9 @@
 const CACHE_NAME = 'A-TALK-TO-ME-V1';
 const urlsToCache = [
-  '/',
-  '/lib/prism.css',
-  '/lib/prism.js',
-  '/css/style.css',
-  '/js/speak.js',
+  '/posts',
+  '/posts?json=true',
+  '/style.css',
+  '/app.js',
 ];
 
 self.addEventListener('install', (event) => {
@@ -30,7 +29,7 @@ self.addEventListener('fetch', (event) => {
   const { request } = event;
 
   // should only intercept GET requests
-  if (request.method !== 'GET') {
+  if (request.method !== 'GET' || request.url.includes('sockjs-node')) {
     return event.respondWith(fetch(request));
   }
 
@@ -38,6 +37,16 @@ self.addEventListener('fetch', (event) => {
     // don't need to cache response if the request is failed
     if (!res || res.status !== 200 || res.type !== 'basic') {
       return res;
+    }
+
+    const contentType = res.headers.get('content-type');
+    if (contentType.indexOf('application/json') !== -1) {
+      res.clone()
+        .json()
+        .then(data => self.clients.matchAll()
+        .then(all =>
+          all.map(client => client.postMessage(data))
+        ));
     }
 
     const clonedRes = res.clone();
@@ -65,3 +74,8 @@ self.addEventListener('fetch', (event) => {
       })
   );
 });
+
+// self.addEventListener('message', (event) => {
+//   console.log('hi');
+//   event.ports[0].postMessage('back');
+// });
