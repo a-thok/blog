@@ -51,27 +51,3 @@
   color: var(--emphasis);
   text-align: center;
 }
-
-
-/* IE8 & IE9 */
-/*.page-body {
-  width: 1024px\0;
-}
-
-.page-content {
-  float: left\0;
-  width: 684px\0;
-}
-
-.page-aside {
-  float: right\0;
-  width: 250px\0;
-}
-
-.article-tags {
-  display: inline-block\0;
-}
-
-.article-speak {
-  float: right\0;
-}*/

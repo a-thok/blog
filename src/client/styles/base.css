@@ -3,7 +3,9 @@ html {
   line-height: 1.5;
 }
 
-*, ::before, ::after {
+*,
+::before,
+::after {
   box-sizing: inherit;
 }
 
@@ -12,7 +14,10 @@ body {
   font-family: "Raleway", "Microsoft Yahei", "PingFang SC", "Heiti SC", sans-serif;
 }
 
-input, textarea, select, button {
+input,
+textarea,
+select,
+button {
   font-family: inherit;
   font-size: inherit;
 }

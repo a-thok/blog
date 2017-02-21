@@ -19,7 +19,6 @@
   margin-left: 0;
 }
 
-
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   .app-main.blog {
     height: 756px;
@@ -79,7 +78,6 @@
   left: 1px\9;
 }
 
-
 .ie .article-list-pager {
   text-align: right;
 }
@@ -97,7 +95,6 @@
   line-height: 6rem;
 }
 
-
 .ie .about-skills {
   overflow: hidden;
 }
@@ -106,7 +103,6 @@
   width: 25%;
   float: left;
 }
-
 
 .ie .article-title {
   text-align: center;
