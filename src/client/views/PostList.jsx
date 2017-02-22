@@ -28,8 +28,10 @@ class PostList extends Component {
 
   render() {
     const { totalPages, currentPage, tag, posts } = this.props;
-    const hasPrevPage = currentPage > 1;
-    const hasNextPage = currentPage < totalPages;
+    const prevPage = currentPage - 1;
+    const nextPage = currentPage + 1;
+    const hasPrevPage = prevPage > 0;
+    const hasNextPage = nextPage <= totalPages;
 
     return (
       <main className="app-main blog">
@@ -51,16 +53,16 @@ class PostList extends Component {
         <nav className="article-list-pager">
           {hasPrevPage ? (
             <Link
-              className="article-list-prev" to={`/blog?tag=${tag}&page=${currentPage - 1}`}
+              className="article-list-prev" to={`/blog?tag=${tag}&page=${prevPage}`}
               dangerouslySetInnerHTML={{ __html: '<svg><use xlink:href="/icons.svg#icon-arrow-left" /></svg>' }}
-              onClick={() => this.fetchPosts(tag, currentPage - 1)}
+              onClick={() => this.fetchPosts(tag, prevPage)}
             />
           ) : null}
           {hasNextPage ? (
             <Link
-              className="article-list-next" to={`/blog?tag=${tag}&page=${currentPage + 1}`}
+              className="article-list-next" to={`/blog?tag=${tag}&page=${nextPage}`}
               dangerouslySetInnerHTML={{ __html: '<svg><use xlink:href="/icons.svg#icon-arrow-right" /></svg>' }}
-              onClick={() => this.fetchPosts(tag, currentPage + 1)}
+              onClick={() => this.fetchPosts(tag, nextPage)}
             />
           ) : null}
         </nav>
