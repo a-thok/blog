@@ -1,6 +1,7 @@
 @import "./vars.css";
 @import "./base.css";
 @import "./app.css";
+@import "./offline.css";
 @import './sentence.css';
 @import './list.css';
 @import './post.css';
