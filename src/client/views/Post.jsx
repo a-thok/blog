@@ -56,7 +56,11 @@ class Post extends Component {
     document.title = this.props.post.title;
 
     if ('speechSynthesis' in window) {
-      this.utterance.text = this.getPostText();
+      if (this.utterance) {
+        this.utterance.text = this.getPostText();
+      } else {
+        this.setUtterance();
+      }
     }
   }
 
