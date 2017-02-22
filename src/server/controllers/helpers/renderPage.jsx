@@ -65,7 +65,7 @@ const renderPage = (req, res, state = {}) => {
     title: res.locals.title,
     app,
     initialState,
-    isIe: res.locals.isIE,
+    isIE: res.locals.isIE,
   }));
 };
 
