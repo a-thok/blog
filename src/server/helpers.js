@@ -20,6 +20,10 @@ const directives = {
     'a.disquscdn.com',
     (req, res) => `'nonce-${res.locals.nonce}'`,
   ],
+  imgSrc: [
+    "'self'",
+    'referrer.disqus.com',
+  ],
   fontSrc: [
     "'self'",
     'fonts.gstatic.com',
