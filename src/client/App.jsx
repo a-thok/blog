@@ -55,7 +55,7 @@ class App extends Component {
     return (
       <div className={`app${this.state.onLine ? '' : ' offline'}`}>
         <OffLine />
-        <Header />
+        <Header url={this.context.router.url} />
         {Main}
       </div>
     );
