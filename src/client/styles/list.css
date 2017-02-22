@@ -129,8 +129,6 @@
 
 .article-list-pager a {
   display: flex;
-  align-items: center;
-  justify-content: center;
   border-radius: 50%;
   font-size: 2rem;
 }
@@ -149,13 +147,15 @@
 }
 
 .article-list-pager svg {
-  width: 50%;
-  height: 50%;
+  width: 65%;
+  height: 65%;
+  margin: auto;
+}
+
+.article-list-next svg {
   fill: #fff;
 }
 
 .article-list-prev svg {
-  width: 60%;
-  height: 60%;
   fill: var(--theme);
 }

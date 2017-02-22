@@ -122,9 +122,9 @@ class Post extends Component {
         <article className="article">
           <h2 className="article-title">{post.title}</h2>
           <section className="article-meta">
-            <svg dangerouslySetInnerHTML={{ __html: '<use xlink:href="/icons.svg#calendar" />' }} />
+            <svg dangerouslySetInnerHTML={{ __html: '<use xlink:href="/icons.svg#icon-calendar" />' }} />
             <time className="article-time">{post.date}</time>
-            <svg dangerouslySetInnerHTML={{ __html: '<use xlink:href="/icons.svg#tag" />' }} />
+            <svg dangerouslySetInnerHTML={{ __html: '<use xlink:href="/icons.svg#icon-tag" />' }} />
             {post.tags ? (
               <ul className="article-tags">
                 {

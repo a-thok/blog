@@ -87,6 +87,10 @@
   text-align: center;
 }
 
+.ie .article-list-pager a svg {
+  transform: translateY(10%);
+}
+
 .ie .article-list-prev {
   line-height: 3.4rem;
 }
@@ -110,6 +114,14 @@
 
 .ie .article-meta {
   text-align: center;
+}
+
+.ie .article-meta svg {
+  margin-left: 1.25em;
+}
+
+.ie .article-meta svg:first-child {
+  margin-left: 0;
 }
 
 .ie .article-meta * {

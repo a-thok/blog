@@ -52,14 +52,14 @@ class PostList extends Component {
           {hasPrevPage ? (
             <Link
               className="article-list-prev" to={`/blog?tag=${tag}&page=${currentPage - 1}`}
-              dangerouslySetInnerHTML={{ __html: '<svg><use xlink:href="/icons.svg#back" /></svg>' }}
+              dangerouslySetInnerHTML={{ __html: '<svg><use xlink:href="/icons.svg#icon-arrow-left" /></svg>' }}
               onClick={() => this.fetchPosts(tag, currentPage - 1)}
             />
           ) : null}
           {hasNextPage ? (
             <Link
               className="article-list-next" to={`/blog?tag=${tag}&page=${currentPage + 1}`}
-              dangerouslySetInnerHTML={{ __html: '<svg><use xlink:href="/icons.svg#next" /></svg>' }}
+              dangerouslySetInnerHTML={{ __html: '<svg><use xlink:href="/icons.svg#icon-arrow-right" /></svg>' }}
               onClick={() => this.fetchPosts(tag, currentPage + 1)}
             />
           ) : null}
