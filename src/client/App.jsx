@@ -1,10 +1,8 @@
 /** @jsx Inferno */
 import Inferno from 'inferno';
 import Component from 'inferno-component';
-import Header from '../components/Header';
-// import Aside from './Aside';
-// import Footer from './Footer';
-import OffLine from '../components/OffLine';
+import Header from './components/Header';
+import OffLine from './components/OffLine';
 
 class App extends Component {
   constructor() {
@@ -31,9 +29,9 @@ class App extends Component {
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker
         .addEventListener('message', (({ data }) => {
-          const { success, ...updates } = data;
+          const { success, result } = data;
           if (success) {
-            this.setState({ ...this.state, ...updates });
+            this.setState({ ...this.state, result });
           }
         }));
     }

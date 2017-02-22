@@ -71,9 +71,9 @@ class Post extends Component {
   fetchPost() {
     fetch(`${location.pathname}?json=true`)
       .then(res => res.json())
-      .then(({ success, post }) => {
+      .then(({ success, result }) => {
         if (success) {
-          this.props.update({ post });
+          this.props.update(result);
         }
       });
   }

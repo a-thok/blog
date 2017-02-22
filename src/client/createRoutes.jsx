@@ -1,7 +1,7 @@
 /** @jsx Inferno */
 import Inferno from 'inferno';
 import { Route, IndexRoute } from 'inferno-router';
-import App from './views/App';
+import App from './App';
 import Sentence from './views/Sentence';
 import PostList from './views/PostList';
 import Post from './views/Post';

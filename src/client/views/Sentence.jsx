@@ -4,14 +4,18 @@ import Component from 'inferno-component';
 
 class Sentence extends Component {
   componentDidMount() {
+    document.title = 'A Talk To Me';
+    this.getSentence();
+  }
+
+  getSentence() {
     fetch('/?json=true')
       .then(res => res.json())
-      .then(({ success, sentence }) => {
+      .then(({ success, result }) => {
         if (success) {
-          this.props.update({ sentence });
+          this.props.update(result);
         }
       });
-    document.title = 'A Talk To me';
   }
 
   render() {

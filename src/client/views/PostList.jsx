@@ -16,12 +16,10 @@ class PostList extends Component {
 
     fetch(`/blog?json=true&page=${currentPage}&tag=${tag}`)
       .then(res => res.json())
-      .then(({ success, posts, totalPages }) => {
+      .then(({ success, result }) => {
         if (success) {
           this.props.update({
-            totalPages,
-            currentPage,
-            posts,
+            ...result,
             fetching: false,
           });
         }
