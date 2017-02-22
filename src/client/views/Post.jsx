@@ -48,23 +48,22 @@ class Post extends Component {
       this.setUtterance();
     }
 
-    Post.loadComment();
+    // load comments later
+    this.timer = setTimeout(Post.loadComment, 5000);
   }
 
-  componentDidUpdate(nextProps) {
+  componentDidUpdate() {
     document.title = this.props.post.title;
 
     if ('speechSynthesis' in window) {
       this.utterance.text = this.getPostText();
     }
-
-    const isDifferentPost = nextProps.post.title !== this.props.post.title;
-    if (isDifferentPost) {
-      Post.loadComment();
-    }
   }
 
   componentWillUnmount() {
+    // if comments haven't been loaded, cancle it
+    clearTimeout(this.timer);
+
     this.props.update({ post: {} });
 
     if ('speechSynthesis' in window) {
