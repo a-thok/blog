@@ -35,7 +35,6 @@ class Post extends Component {
       readBtnText: '朗读文章',
     };
 
-    this.getPostContent = this.getPostContent.bind(this);
     this.readPost = this.readPost.bind(this);
   }
 
@@ -46,6 +45,7 @@ class Post extends Component {
 
     if ('speechSynthesis' in window) {
       this.showReadBtn = true;
+      this.setUtterance();
     }
 
     Post.loadComment();
@@ -53,6 +53,10 @@ class Post extends Component {
 
   componentDidUpdate(nextProps) {
     document.title = this.props.post.title;
+
+    if ('speechSynthesis' in window) {
+      this.utterance.text = this.getPostText();
+    }
 
     const isDifferentPost = nextProps.post.title !== this.props.post.title;
     if (isDifferentPost) {
@@ -78,10 +82,18 @@ class Post extends Component {
       });
   }
 
-  getPostContent(article) {
-    if (article && 'speechSynthesis' in window) {
+  getPostText() {
+    const el = document.createElement('div');
+    el.innerHTML = this.props.post.content;
+    return el.textContent;
+  }
+
+  setUtterance() {
+    const { content } = this.props.post;
+
+    if (content) {
       const utterance = new SpeechSynthesisUtterance();
-      utterance.text = article.textContent;
+      utterance.text = this.getPostText();
 
       utterance.addEventListener('start', () => this.changeReadBtnText('暂停朗读'));
       utterance.addEventListener('pause', () => this.changeReadBtnText('继续朗读'));
@@ -144,7 +156,6 @@ class Post extends Component {
           >{this.state.readBtnText}</button>
           <section
             className="article-content"
-            ref={this.getPostContent}
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </article>
