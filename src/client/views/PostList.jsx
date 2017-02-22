@@ -2,8 +2,15 @@
 import Inferno from 'inferno';
 import Component from 'inferno-component';
 import { Link } from 'inferno-router';
+import Spinner from '../components/Spinner';
 
 class PostList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fetching: false,
+    };
+  }
   componentDidMount() {
     document.title = 'Blog - A Talk To me';
     window.scrollTo(0, 0);
@@ -11,19 +18,22 @@ class PostList extends Component {
     this.fetchPosts(this.props.tag, this.props.currentPage);
   }
 
-  fetchPosts(tag = '', currentPage = 1) {
-    this.props.update({ fetching: true });
-
-    fetch(`/blog?json=true&page=${currentPage}&tag=${tag}`)
+  fetchPosts(tag = '', page = 1) {
+    fetch(`/blog?json=true&page=${page}&tag=${tag}`)
       .then(res => res.json())
       .then(({ success, result }) => {
         if (success) {
-          this.props.update({
-            ...result,
-            fetching: false,
-          });
+          this.props.update(result);
+          this.setState({ fetching: false });
         }
       });
+  }
+
+  handlePager(tag, page) {
+    this.setState({ fetching: true });
+    this.props.update({ posts: [] });
+
+    this.fetchPosts(tag, page);
   }
 
   render() {
@@ -35,6 +45,9 @@ class PostList extends Component {
 
     return (
       <main className="app-main blog">
+        {
+          this.state.fetching ? <Spinner /> : null
+        }
         <ul className="article-list">
           {posts.map(post => (
             <li className="article-item">
@@ -55,14 +68,14 @@ class PostList extends Component {
             <Link
               className="article-list-prev" to={`/blog?tag=${tag}&page=${prevPage}`}
               dangerouslySetInnerHTML={{ __html: '<svg><use xlink:href="/icons.svg#icon-arrow-left" /></svg>' }}
-              onClick={() => this.fetchPosts(tag, prevPage)}
+              onClick={() => this.handlePager(tag, prevPage)}
             />
           ) : null}
           {hasNextPage ? (
             <Link
               className="article-list-next" to={`/blog?tag=${tag}&page=${nextPage}`}
               dangerouslySetInnerHTML={{ __html: '<svg><use xlink:href="/icons.svg#icon-arrow-right" /></svg>' }}
-              onClick={() => this.fetchPosts(tag, nextPage)}
+              onClick={() => this.handlePager(tag, nextPage)}
             />
           ) : null}
         </nav>

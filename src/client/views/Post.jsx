@@ -2,6 +2,7 @@
 import Inferno from 'inferno';
 import Component from 'inferno-component';
 import { Link } from 'inferno-router';
+import Spinner from '../components/Spinner';
 
 class Post extends Component {
   static loadComment() {
@@ -32,6 +33,7 @@ class Post extends Component {
   constructor() {
     super();
     this.state = {
+      fetching: false,
       readBtnText: '朗读文章',
     };
 
@@ -76,11 +78,14 @@ class Post extends Component {
   }
 
   fetchPost() {
+    this.setState({ fetching: true });
+
     fetch(`${this.context.router.url}?json=true`)
       .then(res => res.json())
       .then(({ success, result }) => {
         if (success) {
           this.props.update(result);
+          this.setState({ fetching: false });
         }
       });
   }
@@ -134,6 +139,9 @@ class Post extends Component {
 
     return (
       <main className="app-main">
+        {
+          !post.title && this.state.fetching ? <Spinner /> : null
+        }
         <article className="article">
           <h2 className="article-title">{post.title}</h2>
           <section className="article-meta">

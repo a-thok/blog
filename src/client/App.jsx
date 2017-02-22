@@ -9,7 +9,6 @@ class App extends Component {
     super();
     this.state = {
       onLine: true,
-      fetching: false,
     };
 
     this.update = this.update.bind(this);

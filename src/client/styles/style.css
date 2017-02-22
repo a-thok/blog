@@ -2,6 +2,7 @@
 @import "./base.css";
 @import "./app.css";
 @import "./offline.css";
+@import "./spinner.css";
 @import './sentence.css';
 @import './list.css';
 @import './post.css';

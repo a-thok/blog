@@ -1,0 +1,17 @@
+.spinner {
+  padding: 1em 0;
+  text-align: center;
+}
+
+.spinner svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  fill: var(--theme);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotateZ(1turn);
+  }
+}
