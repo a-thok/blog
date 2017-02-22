@@ -144,7 +144,6 @@ class Post extends Component {
           >{this.state.readBtnText}</button>
           <section
             className="article-content"
-            id="article-content"
             ref={this.getPostContent}
             dangerouslySetInnerHTML={{ __html: post.content }}
           />

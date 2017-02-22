@@ -10,8 +10,9 @@ import './styles/style.css';
 
 const browserHistory = createBrowserHistory();
 
-if (/\/blog\/.+/.test(location.pathname)) {
-  window.__INITIAL_STATE__.post.content = document.getElementById('article-content').innerHTML;
+const el = document.querySelector('.article-content');
+if (el) {
+  window.__INITIAL_STATE__.post.content = el.innerHTML;
 }
 
 Inferno.render((
