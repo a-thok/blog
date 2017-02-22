@@ -2,4 +2,5 @@
 /dist/
 /server.js
 /data/posts.json
+/.vscode
 *.log
