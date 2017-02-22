@@ -69,7 +69,7 @@ class Post extends Component {
   }
 
   fetchPost() {
-    fetch(`${location.pathname}?json=true`)
+    fetch(`${this.context.router.url}?json=true`)
       .then(res => res.json())
       .then(({ success, result }) => {
         if (success) {
