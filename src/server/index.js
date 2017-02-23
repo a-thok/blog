@@ -13,8 +13,8 @@ server.use(compression());
 server.use(express.static(path.join(process.cwd(), './public')));
 server.use(express.static(path.join(process.cwd(), './dist')));
 
-server.use(helpers.setNonce);
-server.use(helpers.setCsp);
+// server.use(helpers.setNonce);
+// server.use(helpers.setCsp);
 server.use(helpers.setSecurityHeaders);
 server.use(helpers.sniffIE);
 

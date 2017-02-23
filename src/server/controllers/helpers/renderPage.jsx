@@ -3,6 +3,7 @@ import InfernoServer from 'inferno-server';
 import { RouterContext, match } from 'inferno-router';
 import createRoutes from '../../../client/createRoutes';
 
+/* eslint-disable no-unused-vars */
 const template = ({ nonce, title, app, initialState, isIE }) =>
 (`<!DOCTYPE html>
 <html lang="zh-cmn-Hans">
@@ -22,7 +23,7 @@ const template = ({ nonce, title, app, initialState, isIE }) =>
   <!--[if lt IE 9]>
   <link href="/ie8.css" rel="stylesheet">
   <![endif]-->
-  <script nonce=${nonce}>
+  <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
         navigator.serviceWorker
@@ -31,12 +32,12 @@ const template = ({ nonce, title, app, initialState, isIE }) =>
       });
     }
   </script>
-  <script nonce=${nonce}>
+  <script>
     var __INITIAL_STATE__ = ${JSON.stringify(initialState)}
   </script>
   <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Object.assign,Promise,fetch,Map,WeakMap" defer></script>
   <script src="/app.js" defer></script>${isIE ? `\n  <script src="//cdn.bootcss.com/svg4everybody/2.1.4/svg4everybody.legacy.min.js"></script>
-  <script nonce=${nonce}> svg4everybody(); </script>` : ''}
+  <script> svg4everybody(); </script>` : ''}
 </head>
 <body>
   <div id="root">${app}</div>
