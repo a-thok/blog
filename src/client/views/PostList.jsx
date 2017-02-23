@@ -18,6 +18,13 @@ class PostList extends Component {
     this.fetchPosts(this.props.tag, this.props.currentPage);
   }
 
+  componentWillUnmount() {
+    this.props.update({
+      tag: '',
+      currentPage: 1,
+    });
+  }
+
   fetchPosts(tag = '', page = 1) {
     fetch(`/blog?json=true&page=${page}&tag=${tag}`)
       .then(res => res.json())
