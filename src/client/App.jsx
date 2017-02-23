@@ -30,7 +30,7 @@ class App extends Component {
         .addEventListener('message', (({ data }) => {
           const { success, result } = data;
           if (success) {
-            this.setState({ ...this.state, result });
+            this.setState({ ...this.state, ...result });
           }
         }));
     }
