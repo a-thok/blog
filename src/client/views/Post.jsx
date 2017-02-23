@@ -50,8 +50,13 @@ class Post extends Component {
       this.setUtterance();
     }
 
-    // load comments later
-    this.timer = setTimeout(Post.loadComment, 5000);
+    // load comments only after the post itself has been loaded
+    this.timer = setInterval(() => {
+      if (this.props.post.title) {
+        Post.loadComment();
+        clearInterval(this.timer);
+      }
+    }, 5000);
   }
 
   componentDidUpdate() {
@@ -68,7 +73,7 @@ class Post extends Component {
 
   componentWillUnmount() {
     // if comments haven't been loaded, cancle it
-    clearTimeout(this.timer);
+    clearInterval(this.timer);
 
     this.props.update({ post: {} });
 
