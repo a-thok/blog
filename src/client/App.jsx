@@ -54,7 +54,7 @@ class App extends Component {
     return (
       <div className="app">
         {this.state.onLine ? null : <OffLine />}
-        <Header url={this.context.router.url} />
+        <Header currentRoute={this.context.router.location.pathname} />
         {Main}
       </div>
     );

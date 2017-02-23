@@ -2,7 +2,7 @@
 import Inferno from 'inferno';
 import { Link, IndexLink } from 'inferno-router';
 
-const Header = ({ url }) => {
+const Header = ({ currentRoute }) => {
   const links = [
     { name: '灵光', to: '/' },
     { name: '博客', to: '/blog' },
@@ -10,7 +10,7 @@ const Header = ({ url }) => {
   ];
 
   const className = (to) => {
-    if (to === url) {
+    if (to === currentRoute) {
       return 'active';
     }
     return null;
