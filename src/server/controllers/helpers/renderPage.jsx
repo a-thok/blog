@@ -23,6 +23,15 @@ const template = ({ nonce, title, app, initialState, isIE }) =>
   <link href="/ie8.css" rel="stylesheet">
   <![endif]-->
   <script nonce=${nonce}>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker
+          .register('/sw.js')
+          .catch(function (error) { console.log(error); });
+      });
+    }
+  </script>
+  <script nonce=${nonce}>
     var __INITIAL_STATE__ = ${JSON.stringify(initialState)}
   </script>
   <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Object.assign,Promise,fetch,Map,WeakMap" defer></script>

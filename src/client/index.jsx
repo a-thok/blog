@@ -20,10 +20,3 @@ Inferno.render((
     {createRoutes(window.__INITIAL_STATE__)}
   </Router>
 ), document.getElementById('root'));
-
-// if ('serviceWorker' in navigator) {
-//   window.addEventListener('load', () => {
-//     navigator.serviceWorker.register('/sw.js')
-//       .catch(error => console.log(error));
-//   });
-// }
