@@ -60,7 +60,10 @@ class Post extends Component {
   }
 
   componentDidUpdate() {
-    document.title = this.props.post.title;
+    const { title } = this.props.post;
+    if (title) {
+      document.title = title;
+    }
 
     if ('speechSynthesis' in window) {
       if (this.utterance) {
