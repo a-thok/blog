@@ -4,6 +4,13 @@
   flex-direction: column;
 }
 
+/* ie */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .app-main.blog {
+    height: 756px;
+  }
+}
+
 /* list */
 .article-list {
   flex: 1;
@@ -25,6 +32,7 @@
 }
 
 .article-item-left time {
+  display: block\0;
   width: 100%;
   color: var(--grey);
 }
@@ -71,8 +79,7 @@
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
-  margin-left: -0.25rem;
-  margin-top: -0.25rem;
+  transform: translate(-50%, -50%);
   background-color: var(--theme);
   transition: color 0.5s, transform 0.3s;
 }
@@ -80,7 +87,7 @@
 .article-item-title:hover::after {
   background-color: #fff;
   border: 1px solid var(--theme);
-  transform: scale(2.5);
+  transform: translate(-50%, -50%) scale(2.5);
 }
 
 @media (min-width: 20rem) {

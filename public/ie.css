@@ -1,0 +1,110 @@
+/* header */
+.app-header {
+  overflow: hidden;
+}
+
+.app-title {
+  float: left;
+}
+
+.app-nav {
+  float: right;
+  margin-top: 28px;
+}
+
+/* list */
+.article-list {
+  font-size: 1.25em;
+}
+
+.article-item {
+  overflow: hidden;
+  height: 130px;
+}
+
+.article-item-left {
+  position: relative;
+  width: 10em;
+  height: 100%;
+  float: left;
+}
+
+.article-item-left time {
+  float: left;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.article-item-left:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2px;
+  height: 100%;
+}
+
+.article-item-right {
+  float: left;
+  height: 100%;
+  padding-left: 4.6em;
+}
+
+.article-item-right h2 {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.article-item-title:hover h2 {
+  transform: translateY(-50%) translateX(1em);
+}
+
+/* pager */
+.article-list-pager {
+  text-align: right;
+}
+
+.article-list-pager a {
+  display: inline-block;
+  text-align: center;
+}
+
+.article-list-pager a {
+  position: relative;
+}
+
+.article-list-pager a svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* post */
+.article-title {
+  text-align: center;
+}
+
+.article-meta {
+  text-align: center;
+}
+
+.article-meta * {
+  vertical-align: middle;
+}
+
+.article-tags,
+.article-tags li {
+  display: inline-block;
+}
+
+/* about */
+.about-skills {
+  overflow: hidden;
+}
+
+.about-skills dl {
+  width: 25%;
+  float: left;
+}

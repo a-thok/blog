@@ -1,0 +1,64 @@
+/* header */
+.app-title ruby {
+  margin-right: 0.25em;
+}
+
+.app-title ruby:last-child {
+  margin-right: 0;
+}
+
+.app-nav a {
+  margin-left: 1.375em;
+}
+
+.app-nav a:first-child {
+  margin-left: 0;
+}
+
+/* list */
+.article-item-title:after {
+  margin-left: -0.25em;
+  margin-top: -0.25em;
+}
+
+.article-item-left time {
+  margin-top: -15px;
+}
+
+.article-item-right h2 {
+  margin-top: -17px;
+}
+
+.article-list-prev svg {
+  margin-top: -17px;
+  margin-left: -17px;
+}
+
+.article-list-next svg {
+  margin-top: -26px;
+  margin-left: -26px;
+}
+
+/* post */
+.article-meta svg {
+  margin-left: 1.25em;
+}
+
+.article-meta svg:first-child {
+  margin-left: 0;
+}
+
+.article-meta img {
+  width: 1em !important;
+  height: 1em !important;
+}
+
+.article-content pre {
+  background-color: #272822;
+}
+
+/* sentence */
+.sentence-quote {
+  margin-top: -60px;
+  margin-left: -384px\0/;
+}
