@@ -1,3 +1,10 @@
+.article :not(pre) > code {
+  padding: 0 1px;
+  margin: 0 0.12em;
+  background-color: #deeecf;
+  vertical-align: bottom;
+}
+
 /* title & meta */
 .article-title {
   margin: 0;
@@ -68,15 +75,6 @@
   display: none;
 }
 
-.article-read:hover {
-  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2);
-}
-
-.article-read:active {
-  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.4);
-  transform: translate(1px, 1px);
-}
-
 /* content */
 .article-content {
   margin-top: 4.6em;
@@ -124,13 +122,6 @@
 
 .article-content pre code {
   font-size: 0.875em;
-}
-
-.article-content p > code {
-  padding: 2px;
-  margin: 0 0.25em;
-  background-color: #eef4ec;
-  vertical-align: bottom;
 }
 
 .article-content a {
