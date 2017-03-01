@@ -10,13 +10,15 @@ const links = [
 
 const Header = () => (
   <header className="app-header">
-    <IndexLink className="app-title">
-      <ruby>佮<rt>kap</rt></ruby>
-      <ruby>阿<rt>a</rt></ruby>
-      <ruby>托<rt>thok</rt></ruby>
-      <ruby>講<rt>kóng</rt></ruby>
-      <ruby>話<rt>uē</rt></ruby>
-    </IndexLink>
+    <h1 className="app-title">
+      <IndexLink>
+        <ruby>佮<rt>kap</rt></ruby>
+        <ruby>阿<rt>a</rt></ruby>
+        <ruby>托<rt>thok</rt></ruby>
+        <ruby>講<rt>kóng</rt></ruby>
+        <ruby>話<rt>uē</rt></ruby>
+      </IndexLink>
+    </h1>
     <nav className="app-nav">
       {links.map(({ to, name }) => (
         <Link to={to} activeClassName="active">{name}</Link>
