@@ -4,7 +4,7 @@ import Component from 'inferno-component';
 
 class About extends Component {
   componentDidMount() {
-    document.title = 'About - A Talk To me';
+    document.title = 'About Me - A Talk To me';
   }
 
   render() {
