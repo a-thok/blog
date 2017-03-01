@@ -1,12 +1,25 @@
+.sentence {
+  padding-top: 1px; /* prevent margin collpase */
+}
+
 .sentence-quote {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 768px;
-  max-width: 80%;
-  margin: 0;
+  position: relative;
+  max-width: 90%;
+  margin: 3em auto 0;
+  margin-top: 15vh;
   font-size: 1.125rem;
+}
+
+@media (min-width: 20rem) {
+  .sentence-quote {
+    font-size: calc(0.875em + (1.125 - 0.875) * (100vw - 20rem) / (48 - 20));
+  }
+}
+
+@media (min-width: 48rem) {
+  .sentence-quote {
+    font-size: 1.125em;
+  }
 }
 
 .sentence-quote::before,

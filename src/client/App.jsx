@@ -55,7 +55,7 @@ class App extends Component {
       <div className="app">
         {this.state.onLine ? null : <OffLine />}
         <Header />
-        {Main}
+        <div className="app-main">{Main}</div>
       </div>
     );
   }

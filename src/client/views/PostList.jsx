@@ -51,7 +51,7 @@ class PostList extends Component {
     const hasNextPage = nextPage <= totalPages;
 
     return (
-      <main className="app-main blog">
+      <div className="blog">
         {
           this.state.fetching ? <Spinner /> : null
         }
@@ -86,7 +86,7 @@ class PostList extends Component {
             />
           ) : null}
         </nav>
-      </main>
+      </div>
     );
   }
 }

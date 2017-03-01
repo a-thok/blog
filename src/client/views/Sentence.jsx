@@ -20,11 +20,11 @@ class Sentence extends Component {
 
   render() {
     return (
-      <main className="app-main">
+      <div className="sentence">
         <blockquote className="sentence-quote">
           {this.props.sentence}
         </blockquote>
-      </main>
+      </div>
     );
   }
 }

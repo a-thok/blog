@@ -10,13 +10,12 @@
 .app-title {
   flex: 1;
   position: relative;
+  display: block;
+  margin: 0.67em 0;
+  color: inherit;
   font-size: 1.75rem;
   font-weight: normal;
   font-family: "Microsoft Jhenghei", sans-serif;
-}
-
-.app-title a {
-  color: inherit;
   text-decoration: none;
 }
 
@@ -35,29 +34,29 @@
   font-family: "Segoe UI", "Trebuchet MS", "Lucida Sans Unicode", sans-serif;
 }
 
-.app-title a:hover ruby {
+.app-title:hover ruby {
   color: var(--theme);
 }
 
-.app-title a:hover rt {
+.app-title:hover rt {
   animation-name: bounce;
   animation-duration: 1s;
   animation-iteration-count: infinite;
 }
 
-.app-title a:hover ruby:nth-child(2) rt {
+.app-title:hover ruby:nth-child(2) rt {
   animation-delay: 0.2s;
 }
 
-.app-title a:hover ruby:nth-child(3) rt {
+.app-title:hover ruby:nth-child(3) rt {
   animation-delay: 0.4s;
 }
 
-.app-title a:hover ruby:nth-child(4) rt {
+.app-title:hover ruby:nth-child(4) rt {
   animation-delay: 0.6s;
 }
 
-.app-title a:hover ruby:nth-child(5) rt {
+.app-title:hover ruby:nth-child(5) rt {
   animation-delay: 0.8s;
 }
 

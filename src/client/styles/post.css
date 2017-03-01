@@ -5,7 +5,11 @@
   vertical-align: bottom;
 }
 
-/* title & meta */
+/* header */
+.article-header {
+  margin-bottom: 2em;
+}
+
 .article-title {
   margin: 0;
   font-size: 2em;
@@ -14,7 +18,7 @@
 .article-meta {
   display: flex;
   flex-wrap: wrap;
-  margin: 1em 0 2em;
+  margin-top: 1em;
   align-items: center;
   color: var(--grey);
   font-size: 0.875em;
@@ -182,6 +186,10 @@
 }
 
 /* comment */
-#disqus_thread {
+.article-comment {
   margin-top: 5em;
+}
+
+.article-comment-title {
+  font-size: 1.625em;
 }

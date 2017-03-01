@@ -39,10 +39,3 @@
 .article-content pre {
   background-color: #272822;
 }
-
-/* sentence */
-.sentence-quote {
-  width: 768px;
-  margin-top: -60px;
-  margin-left: -384px;
-}

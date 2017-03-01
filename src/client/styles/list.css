@@ -1,12 +1,13 @@
 
-.app-main.blog {
+.blog {
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
 
 /* ie */
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-  .app-main.blog {
+  .blog {
     height: 756px;
   }
 }

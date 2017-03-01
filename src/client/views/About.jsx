@@ -9,11 +9,17 @@ class About extends Component {
 
   render() {
     return (
-      <main className="app-main">
-        <h2 className="about-name">Victor Loo<small className="about-profession">前端工程师</small></h2>
-        <p>赚钱的时候最喜欢敲代码，不赚钱的时候最喜欢学语言，什么都不喜欢的时候最喜欢写文章。</p>
-        <p>希望永远不被任何人记住，随时转身消失在世界里。</p>
-        <div className="about-skills">
+      <section className="about">
+        <h2 className="about-title">
+          Victor Loo<small className="about-profession">前端工程师</small>
+        </h2>
+
+        <section className="about-basic">
+          <p>赚钱的时候最喜欢敲代码，不赚钱的时候最喜欢学语言，什么都不喜欢的时候最喜欢写文章。</p>
+          <p>希望永远不被任何人记住，随时转身消失在世界里。</p>
+        </section>
+
+        <section className="about-skills">
           <dl>
             <dt>熟练</dt>
             <dd>JavaScript (ES6+)</dd>
@@ -46,9 +52,10 @@ class About extends Component {
             <dd>Shell Script</dd>
             <dd>Python</dd>
           </dl>
-        </div>
+        </section>
+
         <address className="about-address"><span>联系我：</span>a-thok@outlook.com</address>
-      </main>
+      </section>
     );
   }
 }

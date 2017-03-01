@@ -146,41 +146,46 @@ class Post extends Component {
     const btnClassName = `btn article-read${this.showReadBtn ? '' : ' hidden'}`;
 
     return (
-      <main className="app-main">
+      <div>
         {
           !post.title && this.state.fetching ? <Spinner /> : null
         }
         <article className="article">
-          <h2 className="article-title">{post.title}</h2>
-          <section className="article-meta">
-            <svg dangerouslySetInnerHTML={{ __html: '<use xlink:href="/icons.svg#icon-calendar" />' }} />
-            <time className="article-time">{post.date}</time>
-            <svg dangerouslySetInnerHTML={{ __html: '<use xlink:href="/icons.svg#icon-tag" />' }} />
-            {post.tags ? (
-              <ul className="article-tags">
-                {
-                  post.tags.map(tag => (
-                    <li className="article-tag" key={tag}>
-                      <Link to={`/blog?tag=${tag}`} onClick={() => update({ tag })}>{tag}</Link>
-                    </li>
-                  ))
-                }
-              </ul>
-            ) : null}
-          </section>
+          <header className="article-header">
+            <h1 className="article-title">{post.title}</h1>
+            <section className="article-meta">
+              <svg dangerouslySetInnerHTML={{ __html: '<use xlink:href="/icons.svg#icon-calendar" />' }} />
+              <time className="article-time">{post.date}</time>
+              <svg dangerouslySetInnerHTML={{ __html: '<use xlink:href="/icons.svg#icon-tag" />' }} />
+              {post.tags ? (
+                <ul className="article-tags">
+                  {
+                    post.tags.map(tag => (
+                      <li className="article-tag" key={tag}>
+                        <Link to={`/blog?tag=${tag}`} onClick={() => update({ tag })}>{tag}</Link>
+                      </li>
+                    ))
+                  }
+                </ul>
+              ) : null}
+            </section>
+          </header>
           <button
             className={btnClassName}
             aria-hidden="true"
             onClick={this.readPost}
           >{this.state.readBtnText}</button>
-          <section
+          <div
             className="article-content"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </article>
 
-        <section id="disqus_thread" />
-      </main>
+        <section className="article-comment">
+          <h2 className="article-comment-title">评论</h2>
+          <div id="disqus_thread" />
+        </section>
+      </div>
     );
   }
 }
