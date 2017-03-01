@@ -5,7 +5,6 @@ import Component from 'inferno-component';
 class Sentence extends Component {
   componentDidMount() {
     document.title = 'A Talk To Me';
-    this.getSentence();
   }
 
   getSentence() {
@@ -13,6 +12,8 @@ class Sentence extends Component {
       .then(res => res.json())
       .then(({ success, result }) => {
         if (success) {
+          console.log(1);
+          console.log(result);
           this.props.update(result);
         }
       });
@@ -24,6 +25,7 @@ class Sentence extends Component {
         <blockquote className="sentence-quote">
           {this.props.sentence}
         </blockquote>
+        <button className="btn sentence-btn" onClick={() => this.getSentence()}>随便说说</button>
       </div>
     );
   }

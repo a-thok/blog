@@ -39,3 +39,8 @@
 .article-content pre {
   background-color: #272822;
 }
+
+/* sentence */
+.sentence-btn {
+  display: none;
+}

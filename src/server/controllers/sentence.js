@@ -13,6 +13,8 @@ export const getSentence = (req, res) => {
 
   const state = { sentence };
 
+  res.header('Cache-Control', 'no-cache');
+
   if (req.query.json) {
     return res.status(200).send({
       success: true,
