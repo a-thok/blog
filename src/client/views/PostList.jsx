@@ -74,16 +74,23 @@ class PostList extends Component {
           {hasPrevPage ? (
             <Link
               className="article-list-prev" to={`/blog?tag=${tag}&page=${prevPage}`}
-              dangerouslySetInnerHTML={{ __html: '<svg><use xlink:href="/icons.svg#icon-arrow-left" /></svg>' }}
+              title="上一页"
               onClick={() => this.handlePager(tag, prevPage)}
-            />
+            >
+              <svg dangerouslySetInnerHTML={{ __html: '<use xlink:href="/icons.svg#icon-arrow-left"></use>' }} />
+              <span hidden>上一页</span>
+            </Link>
           ) : null}
+
           {hasNextPage ? (
             <Link
               className="article-list-next" to={`/blog?tag=${tag}&page=${nextPage}`}
-              dangerouslySetInnerHTML={{ __html: '<svg><use xlink:href="/icons.svg#icon-arrow-right" /></svg>' }}
               onClick={() => this.handlePager(tag, nextPage)}
-            />
+              title="下一页"
+            >
+              <svg dangerouslySetInnerHTML={{ __html: '<use xlink:href="/icons.svg#icon-arrow-right"></use>' }} />
+              <span hidden>下一页</span>
+            </Link>
           ) : null}
         </nav>
       </div>
