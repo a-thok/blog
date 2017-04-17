@@ -162,4 +162,5 @@
 .prev span,
 .next span {
   visibility: hidden;
+  position: absolute;
 }

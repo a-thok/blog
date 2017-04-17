@@ -137,6 +137,7 @@
 
 .ie8 .post-list__prev span,
 .ie8 .post-list__next span {
+  position: static;
   visibility: visible;
   font-size: 16px;
 }
