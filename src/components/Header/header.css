@@ -1,0 +1,117 @@
+.header {
+  display: flex;
+  width: 100%;
+  max-width: 61.25rem;
+  padding: 0 1em;
+  margin: 0 auto;
+}
+
+@supports (display: grid) {
+  .header {
+    grid-area: header;
+  }
+}
+
+/* title */
+.title {
+  flex: 1;
+  position: relative;
+  display: block;
+  font-size: 1.75rem;
+  font-weight: normal;
+  font-family: "Microsoft Jhenghei", sans-serif;
+}
+
+.title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.title ruby {
+  ruby-align: center;
+  transition: color 0.2s;
+}
+
+.title ruby:not(:last-child) {
+  margin-right: 0.25em;
+}
+
+.title rt {
+  color: var(--grey);
+  font-size: 0.375em;
+  font-family: "Segoe UI", "Trebuchet MS", "Lucida Sans Unicode", sans-serif;
+}
+
+.title a:hover ruby {
+  color: var(--theme);
+}
+
+.title a:hover rt {
+  animation-name: bounce;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+.title a:hover ruby:nth-child(2) rt {
+  animation-delay: 0.2s;
+}
+
+.title a:hover ruby:nth-child(3) rt {
+  animation-delay: 0.4s;
+}
+
+.title a:hover ruby:nth-child(4) rt {
+  animation-delay: 0.6s;
+}
+
+.title a:hover ruby:nth-child(5) rt {
+  animation-delay: 0.8s;
+}
+
+@keyframes bounce {
+  50% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* nav */
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.375rem;
+}
+
+.link {
+  color: var(--grey);
+  font-weight: lighter;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.link:not(:first-child) {
+  margin-left: 1.375em;
+}
+
+.link:hover {
+  color: var(--theme);
+}
+
+.link-active {
+  color: var(--theme);
+}
+
+@media (max-width: 40rem) {
+  .header {
+    display: block;
+    text-align: center;
+  }
+
+  .title {
+    font-size: 1.875rem;
+  }
+}

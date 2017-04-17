@@ -1,6 +1,5 @@
 /node_modules/
 /dist/
-/server.js
+/npm-debug.log*
 /data/posts.json
-/.vscode
-*.log
+/public/*.html

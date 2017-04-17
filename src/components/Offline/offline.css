@@ -1,0 +1,20 @@
+.offline {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  width: 100%;
+  padding: 0.5em 0;
+  background-color: var(--grey);
+  color: #fff;
+  font-size: 0.875em;
+  text-align: center;
+  animation: show 0.7s;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}

@@ -1,0 +1,57 @@
+.title {
+  margin: 0.6em 0;
+  font-weight: normal;
+  font-size: 3.75rem;
+}
+
+.profession {
+  margin-left: 2em;
+  color: var(--grey);
+  font-size: 1rem;
+}
+
+@media (max-width: 27rem) {
+  .profession {
+    display: block;
+    margin-left: 0;
+  }
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 3em;
+  clear: right;
+}
+
+.skills dl {
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.skills dt {
+  margin-bottom: 0.5em;
+  color: var(--theme);
+  font-size: 1.125em;
+}
+
+.skills dd {
+  padding: 0.25em 0;
+  margin-left: 0;
+}
+
+.skills dl:last-child dd {
+  color: var(--grey);
+}
+
+.address {
+  margin-top: 2em;
+  font-style: normal;
+  text-align: right;
+}
+
+.address span {
+  color: var(--grey);
+  font-size: 0.75em;
+}

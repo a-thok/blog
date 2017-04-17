@@ -1,0 +1,165 @@
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ie */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .wrapper {
+    height: 756px;
+  }
+}
+
+/* list */
+.list {
+  flex: 1;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+}
+
+.item-left {
+  flex: 0 0 6.6em;
+  display: flex;
+  align-items: center;
+}
+
+.item-left time {
+  display: block\0;
+  width: 100%;
+  color: var(--grey);
+}
+
+.item-left::after {
+  content: "";
+  display: block;
+  width: 2px;
+  height: 6em;
+  background-color: #666;
+}
+
+.item-right {
+  position: relative;
+  padding-left: 1.25em;
+}
+
+.item-title {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.item-title h2 {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: normal;
+  transition: transform 0.5s;
+}
+
+.item-title:hover {
+  color: var(--theme);
+}
+
+.item-title:hover h2 {
+  transform: translateX(1.5em);
+}
+
+.item-title::after {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 50%;
+  width: 1em;
+  height: 1em;
+  border: 2px solid var(--theme);
+  border-radius: 50%;
+  margin-top: -0.5em;
+  margin-left: -0.5em;
+  background-color: #fff;
+  transition: transform 0.5s;
+}
+
+.item-title:hover::after {
+  transform: scale(1.5) rotateY(180deg) rotateX(180deg);
+}
+
+@media (min-width: 20rem) {
+  .list {
+    font-size: calc(0.875rem + (1.25 - 0.875) * (100vw - 20rem) / (48 - 20));
+  }
+
+  .item-left {
+    flex-basis: calc(6.6em + (10 - 6.6) * (100vw - 20rem) / (48 - 20));
+  }
+
+  .item-right {
+    padding-left: calc(1.25em + (4.6 - 1.25) * (100vw - 20rem) / (48 - 20));
+  }
+}
+
+@media (min-width: 48rem) {
+  .list {
+    font-size: 1.25rem;
+  }
+
+  .item-left {
+    flex-basis: 10em;
+  }
+
+  .item-right {
+    padding-left: 4.6em;
+  }
+}
+
+/* pager */
+.pager {
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  padding: 1.5em 0;
+}
+
+.pager a {
+  display: flex;
+  border-radius: 50%;
+  font-size: 2rem;
+}
+
+.prev {
+  width: 3.4rem;
+  height: 3.4rem;
+  border: 2px solid var(--theme);
+  margin-right: 0.4em;
+}
+
+.next {
+  width: 5rem;
+  height: 5rem;
+  background-color: var(--theme);
+}
+
+.pager svg {
+  width: 65%;
+  height: 65%;
+  margin: auto;
+}
+
+.next svg {
+  fill: #fff;
+}
+
+.prev svg {
+  fill: var(--theme);
+}
+
+.prev span,
+.next span {
+  visibility: hidden;
+}

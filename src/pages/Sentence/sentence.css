@@ -1,0 +1,68 @@
+.quote {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 36em;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+@media (min-width: 20rem) {
+  .quote {
+    font-size: calc(1rem + (1.125 - 1) * (100vw - 20rem) / (48 - 20));
+  }
+}
+
+@media (min-width: 48rem) {
+  .quote {
+    font-size: 1.125rem;
+  }
+}
+
+.quote::before,
+.quote::after {
+  color: var(--theme);
+  font-weight: bold;
+}
+
+.quote::before {
+  position: absolute;
+  top: -0.5em;
+  left: -1.5em;
+  content: "「";
+}
+
+.quote::after {
+  position: absolute;
+  right: -1.5em;
+  bottom: -0.5em;
+  content: "」";
+}
+
+.btn {
+  composes: btn from '../../style.css';
+  position: fixed;
+  left: 50%;
+  bottom: 5%;
+  transform: translateX(-50%);
+  padding: 0.52em 1em;
+  border-radius: 1px;
+}
+
+.btn:active {
+  transform: translate(-50%, 1px);
+}
+
+@media (max-height: 30rem) {
+  .quote {
+    top: 60%;
+  }
+
+  .btn {
+    font-size: 0.875rem;
+    bottom: 3%;
+  }
+}
