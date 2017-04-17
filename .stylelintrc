@@ -1,4 +1,11 @@
 {
   "extends": "stylelint-config-standard",
-  "ignoreFiles": ["./public/*.css"]
+  "ignoreFiles": ["./public/*.css"],
+  "rules": {
+    "property-no-unknown": [ true, {
+      "ignoreProperties": [
+        "composes"
+      ]
+    }]
+  }
 }

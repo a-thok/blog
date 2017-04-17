@@ -1,0 +1,196 @@
+.article :not(pre) > code {
+  padding: 0 1px;
+  margin: 0 0.12em;
+  background-color: #deeecf;
+  vertical-align: bottom;
+}
+
+/* header */
+.header {
+  margin-bottom: 2em;
+}
+
+.title {
+  margin: 0;
+  font-size: 2em;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1em;
+  align-items: center;
+  color: var(--grey);
+  font-size: 0.875em;
+}
+
+.meta svg {
+  margin-right: 0.5em;
+  fill: currentColor;
+}
+
+.meta svg:first-child {
+  margin-left: 0.3em; /* it just looks good this way */
+}
+
+.meta svg:not(:first-child) {
+  margin-left: 1.25em;
+}
+
+.tags {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.tag a {
+  border-bottom: 1px solid transparent;
+  margin-right: 0.5em;
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s, border-color 0.5s;
+}
+
+.tag a:hover {
+  color: var(--theme);
+  border-color: currentColor;
+}
+
+@media (min-width: 48rem) {
+  .title {
+    text-align: center;
+  }
+
+  .meta {
+    justify-content: center;
+  }
+}
+
+/* read */
+.read {
+  composes: btn from '../../style.css';
+  float: right;
+  width: 4.6rem;
+  font-size: 0.875em;
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+
+.read-hidden {
+  display: none;
+}
+
+/* content */
+.content {
+  margin-top: 4.6em;
+  line-height: 1.9;
+}
+
+.content h3 {
+  margin: 1.8181818181818181em 0 0.9090909090909091em;
+  font-size: 1.375em;
+  counter-reset: sub-heading;
+}
+
+.content h4 {
+  margin: 1.1111111111111112em 0;
+  font-size: 1.125em;
+  counter-increment: sub-heading 1;
+}
+
+.content h4::before {
+  content: counter(sub-heading) ".\00a0";
+}
+
+.content p,
+.content pre {
+  margin: 1.25em 0;
+}
+
+.content pre {
+  /* position: relative; */
+  border-radius: 1px;
+
+  /* font-family: inherit; */
+}
+
+/* .content pre::before {
+  content: attr(data-lang);
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.15em 0.5em;
+  background: var(--grey);
+  color: #333;
+  font-size: 0.875em;
+} */
+
+.content pre code {
+  font-size: 0.875em;
+}
+
+.content a {
+  border-bottom: 1px solid transparent;
+  color: var(--theme);
+  text-decoration: none;
+  transition: border-color 0.5s;
+}
+
+.content a:hover {
+  border-color: var(--theme);
+}
+
+.content ul,
+.content ol {
+  list-style: none;
+}
+
+.content ol {
+  counter-reset: number;
+}
+
+.content li {
+  position: relative;
+  margin-top: 1em;
+}
+
+.content ol li {
+  counter-increment: number;
+}
+
+.content li::before {
+  position: absolute;
+  top: 0;
+  left: -1.5em;
+  font-weight: bold;
+  color: var(--theme);
+}
+
+.content ol li::before {
+  content: counter(number) '.';
+}
+
+.content ul li::before {
+  content: "•";
+}
+
+.content sup {
+  padding: 0.25em;
+}
+
+.annotate {
+  font-size: 0.875em;
+}
+
+.annotate li {
+  margin-top: 0.5em;
+}
+
+/* comment */
+.comment {
+  margin-top: 5em;
+}
+
+.comment-title {
+  font-size: 1.625em;
+}
