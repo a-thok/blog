@@ -90,7 +90,7 @@ class Post extends Component {
   fetchPost() {
     this.setState({ fetching: true });
 
-    fetch(`/json/${this.context.router.url}`)
+    fetch(`/json${this.context.router.url}`)
       .then(res => res.json())
       .then(({ success, result }) => {
         if (success) {
