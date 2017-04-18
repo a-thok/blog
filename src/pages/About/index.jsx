@@ -41,8 +41,8 @@ class About extends Component {
           </dl>
           <dl>
             <dt>工具</dt>
-            <dd>Opera</dd>
             <dd>VS Code</dd>
+            <dd>Vim</dd>
             <dd>git</dd>
             <dd>npm</dd>
             <dd>webpack</dd>
@@ -51,7 +51,7 @@ class About extends Component {
           <dl>
             <dt>涉猎</dt>
             <dd>Shell Script</dd>
-            <dd>Python</dd>
+            <dd>Elm</dd>
           </dl>
         </section>
 
