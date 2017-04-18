@@ -11,9 +11,15 @@
     display: grid;
     grid-template-areas: "header" "main";
     grid-template-rows: auto 1fr;
-    grid-template-columns: auto;
+    grid-template-columns: 100%;
     justify-items: center;
     min-height: 100vh;
+  }
+
+  @-moz-document url-prefix() {
+    .app {
+      grid-template-rows: 1fr auto;
+    }
   }
 
   .main {
