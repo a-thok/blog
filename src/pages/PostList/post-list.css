@@ -1,23 +1,25 @@
-.wrapper {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+:root {
+  --pager-height: 5rem;
 }
 
-/* ie */
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-  .wrapper {
-    height: 756px;
-  }
+.wrapper {
+  position: relative;
+  height: 100%;
 }
 
 /* list */
 .list {
-  flex: 1;
   list-style: none;
   padding-left: 0;
   margin: 0;
   font-size: 0.875rem;
+}
+
+.list::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: var(--pager-height);
 }
 
 .item {
@@ -120,16 +122,31 @@
 
 /* pager */
 .pager {
-  align-self: flex-end;
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
   display: flex;
+  justify-content: flex-end;
   align-items: center;
-  padding: 1.5em 0;
+  width: 48em;
+  max-width: 100%;
+  padding: 0 0.65rem 0.65rem 0;
 }
 
 .pager a {
   display: flex;
   border-radius: 50%;
   font-size: 2rem;
+}
+
+.pager a:hover {
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.pager a:active {
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.4);
+  transform: translate(1px, 1px);
 }
 
 .prev {
@@ -140,8 +157,8 @@
 }
 
 .next {
-  width: 5rem;
-  height: 5rem;
+  width: var(--pager-height);
+  height: var(--pager-height);
   background-color: var(--theme);
 }
 
