@@ -1,0 +1,37 @@
+{
+  "name": "A Talk To Me",
+  "short_name": "A Talk To Me",
+  "description": "Personal blog of A-thok",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#68c144",
+  "theme_color": "#68c144",
+  "icons": [
+    {
+      "src": "/logo/logo_48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo/logo_64.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo/logo_128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo/logo_256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo/logo_512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

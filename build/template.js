@@ -8,6 +8,7 @@ const template = ({ title, state, staticString }) => (
   <title>${title}</title>
   <meta name="description" content="阿托的个人博客，记录技术生涯的成长与日常生活的琐碎">
   <meta name="author" name="阿托">
+  <link rel="manifest" href="/manifest.json">
   <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i" rel="stylesheet">
   <link href="/style.css" rel="stylesheet">
    <!--[if lt IE 9]>
