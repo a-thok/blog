@@ -145,47 +145,51 @@ class Post extends Component {
 
   render() {
     const { post, update } = this.props;
+    const isSpinning = !post.title && this.state.fetching;
 
     return (
       <div>
         {
-          !post.title && this.state.fetching ? <Spinner /> : null
-        }
-        <article className={styles.article}>
-          <header className={styles.header}>
-            <h1 className={styles.title}>{post.title}</h1>
-            <section className={styles.meta}>
-              <SvgIcon name="calendar" />
-              <time>{post.date}</time>
-              <SvgIcon name="tag" />
-              {post.tags ? (
-                <ul className={styles.tags}>
-                  {
-                    post.tags.map(tag => (
-                      <li className={styles.tag} key={tag}>
-                        <Link to={`/blog?tag=${tag}`} onClick={() => update({ tag })}>{tag}</Link>
-                      </li>
-                    ))
-                  }
-                </ul>
-              ) : null}
-            </section>
-          </header>
-          <button
-            className={this.showReadBtn ? styles.read : styles.readHidden}
-            aria-hidden="true"
-            onClick={this.readPost}
-          >{this.state.readBtnText}</button>
-          <div
-            className={styles.content}
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
-        </article>
+          isSpinning ? <Spinner /> : (
+            <div>
+              <article className={styles.article}>
+                <header className={styles.header}>
+                  <h1 className={styles.title}>{post.title}</h1>
+                  <section className={styles.meta}>
+                    <SvgIcon name="calendar" />
+                    <time>{post.date}</time>
+                    <SvgIcon name="tag" />
+                    {post.tags ? (
+                      <ul className={styles.tags}>
+                        {
+                          post.tags.map(tag => (
+                            <li className={styles.tag} key={tag}>
+                              <Link to={`/blog?tag=${tag}`} onClick={() => update({ tag })}>{tag}</Link>
+                            </li>
+                          ))
+                        }
+                      </ul>
+                    ) : null}
+                  </section>
+                </header>
+                <button
+                  className={this.showReadBtn ? styles.read : styles.readHidden}
+                  aria-hidden="true"
+                  onClick={this.readPost}
+                >{this.state.readBtnText}</button>
+                <div
+                  className={styles.content}
+                  dangerouslySetInnerHTML={{ __html: post.content }}
+                />
+              </article>
 
-        <section className={styles.comment}>
-          <h2 className={styles.commentTitle}>评论</h2>
-          <div id="disqus_thread" />
-        </section>
+              <section className={styles.comment}>
+                <h2 className={styles.commentTitle}>评论</h2>
+                <div id="disqus_thread" />
+              </section>
+            </div>
+          )
+        }
       </div>
     );
   }
