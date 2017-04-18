@@ -1,13 +1,13 @@
 const template = ({ title, state, staticString }) => (
 `<!DOCTYPE html>
-<html lang="zh-cmn-Hans">
+<html lang="cmn-hans">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${title}</title>
   <meta name="description" content="阿托的个人博客，记录技术生涯的成长与日常生活的琐碎">
-  <meta name="author" name="阿托">
+  <meta name="author" content="阿托">
   <link rel="manifest" href="/manifest.json">
   <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i" rel="stylesheet">
   <link href="/style.css" rel="stylesheet">
