@@ -11,7 +11,7 @@
     "heroku-postbuild": "npm run build",
     "html": "babel-node --presets env --plugins inferno build/staticGenerator",
     "prebuild": "rm -rf dist",
-    "build": "webpack --config build/webpack.prod --hide-modules",
+    "build": "webpack --hide-modules",
     "postbuild": "npm run html"
   },
   "keywords": [],

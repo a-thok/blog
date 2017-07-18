@@ -66,7 +66,7 @@ if (process.env.NODE_ENV !== 'production') {
   const webpack = require('webpack');
   const webpackDevMiddleware = require('webpack-dev-middleware');
   const webpackHotMiddleware = require('webpack-hot-middleware');
-  const config = require('./build/webpack.dev');
+  const config = require('./webpack.config');
 
   const compiler = webpack(config);
   server.use(webpackDevMiddleware(compiler, {
@@ -75,7 +75,6 @@ if (process.env.NODE_ENV !== 'production') {
   }));
   server.use(webpackHotMiddleware(compiler));
 }
-
 
 server.listen(process.env.PORT || 4000, (err) => {
   if (err) {
