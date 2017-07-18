@@ -1,3 +1,8 @@
+:root {
+  --theme: #68c144;
+  --grey: #bbb;
+}
+
 html {
   box-sizing: border-box;
   line-height: 1.5;
@@ -12,7 +17,7 @@ html {
 body {
   margin: 0;
   color: #333;
-  font-family: "Raleway", "Microsoft Yahei", "PingFang SC", "Heiti SC", sans-serif;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Segeo UI", Arial, sans-serif;
 }
 
 [hidden] {

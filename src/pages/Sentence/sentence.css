@@ -10,6 +10,14 @@
   line-height: 1.65;
 }
 
+[data-ie="8"] .quote {
+  position: static;
+  margin-top: 100px;
+  min-width: 100%;
+  text-align: center;
+  font-size: 20px;
+}
+
 @media (min-width: 20rem) {
   .quote {
     font-size: calc(1rem + (1.125 - 1) * (100vw - 20rem) / (48 - 20));
@@ -65,4 +73,18 @@
     font-size: 0.875rem;
     bottom: 3%;
   }
+}
+
+[data-ie="8"] .quote::before {
+  position: static;
+  content: "本博客在您的浏览器下仅提供最基本的浏览功能";
+}
+
+[data-ie="8"] .quote::after {
+  position: static;
+  content: "建议您换用Oprea、Edge、Firefox或Chrome等现代浏览器以获得最佳浏览体验";
+}
+
+[data-ie="8"] .btn {
+  display: none;
 }

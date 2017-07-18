@@ -4,6 +4,7 @@
   max-width: 61.25rem;
   padding: 0 1em;
   margin: 0 auto;
+  overflow: hidden\9;
 }
 
 @supports (display: grid) {
@@ -20,6 +21,7 @@
   font-size: 1.75rem;
   font-weight: normal;
   font-family: "Microsoft Jhenghei", sans-serif;
+  float: left\9;
 }
 
 .title a {
@@ -32,8 +34,8 @@
   transition: color 0.2s;
 }
 
-.title ruby:not(:last-child) {
-  margin-right: 0.25em;
+.title ruby + ruby {
+  margin-left: 0.25em;
 }
 
 .title rt {
@@ -84,6 +86,12 @@
   justify-content: center;
   align-items: center;
   font-size: 1.375rem;
+  float: right\9;
+}
+
+[data-ie="8"] .nav,
+[data-ie="9"] .nav {
+  margin-top: 28px;
 }
 
 .link {
@@ -93,7 +101,7 @@
   transition: color 0.3s;
 }
 
-.link:not(:first-child) {
+.link + .link {
   margin-left: 1.375em;
 }
 

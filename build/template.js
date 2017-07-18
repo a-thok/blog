@@ -1,5 +1,9 @@
+const isProd = process.env.NODE_ENV === 'production';
+
 const template = ({ title, state, staticString }) => (
 `<!DOCTYPE html>
+<!--[if IE 8]><html lang="cmn-hans" data-ie="8"><![endif]-->
+<!--[if IE 9]><html lang="cmn-hans" data-ie="9"><![endif]-->
 <html lang="cmn-hans">
 <head>
   <meta charset="UTF-8">
@@ -10,23 +14,16 @@ const template = ({ title, state, staticString }) => (
   <meta name="author" content="阿托">
   <link rel="manifest" href="/manifest.json">
   <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i" rel="stylesheet">
-  <link href="/style.css" rel="stylesheet">
-   <!--[if lt IE 9]>
-  <script>
-    document.documentElement.className = 'ie8';
-  </script>
-  <![endif]-->
-  <!--[if lt IE 10]>
+  ${isProd ? '<link href="/style.css" rel="stylesheet">' : ''}
+  <!--[if lt IE 9]>
   <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <link href="/ie.css" rel="stylesheet">
-  <![endif]-->
-  <script>
+  <![endif]-->${isProd ? `\n<script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
         navigator.serviceWorker.register('/sw.js');
       });
     }
-  </script>
+  </script>` : ''}
   <script>
     var __INITIAL_STATE__ = ${JSON.stringify(state)}
   </script>

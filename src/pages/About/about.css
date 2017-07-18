@@ -25,9 +25,20 @@
   clear: right;
 }
 
+[data-ie="8"] .skills,
+[data-ie="9"] .skills {
+  overflow: hidden;
+}
+
 .skills dl {
   flex-grow: 1;
   flex-shrink: 0;
+}
+
+[data-ie="8"] .skills dl,
+[data-ie="9"] .skills dl {
+  width: 25%;
+  float: left;
 }
 
 .skills dt {
