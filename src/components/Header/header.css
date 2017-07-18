@@ -15,9 +15,9 @@
 
 /* title */
 .title {
-  flex: 1;
   position: relative;
   display: block;
+  margin-right: auto;
   font-size: 1.75rem;
   font-weight: normal;
   font-family: "Microsoft Jhenghei", sans-serif;
