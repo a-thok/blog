@@ -78,7 +78,8 @@ class PostList extends Component {
         <nav className={styles.pager}>
           {hasPrevPage ? (
             <Link
-              className={styles.prev} to={`/blog?tag=${tag}&page=${prevPage}`}
+              className={styles.prev}
+              to={`/blog?tag=${tag}&page=${prevPage}`}
               title="上一页"
               onClick={() => this.handlePager(tag, prevPage)}
             >
@@ -89,7 +90,8 @@ class PostList extends Component {
 
           {hasNextPage ? (
             <Link
-              className={styles.next} to={`/blog?tag=${tag}&page=${nextPage}`}
+              className={styles.next}
+              to={`/blog?tag=${tag}&page=${nextPage}`}
               onClick={() => this.handlePager(tag, nextPage)}
               title="下一页"
             >
