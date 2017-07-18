@@ -4,6 +4,13 @@ const baseConfig = require('./webpack.base');
 const cssLoader = require('./cssLoader');
 
 module.exports = Object.assign({}, baseConfig, {
+  entry: {
+    app: [
+      'webpack-hot-middleware/client?reload=true',
+      './src/index.jsx',
+    ],
+  },
+
   module: {
     rules: [
       ...baseConfig.module.rules,
@@ -31,28 +38,10 @@ module.exports = Object.assign({}, baseConfig, {
 
   devtool: 'cheap-module-eval-source-map',
 
-  devServer: {
-    host: '0.0.0.0',
-    proxy: {
-      '/': {
-        target: 'http://localhost:4000',
-        secure: false,
-      },
-      '/posts': {
-        target: 'http://localhost:4000',
-        secure: false,
-      },
-      '/post/*': {
-        target: 'http://localhost:4000',
-        secure: false,
-      },
-    },
-    stats: 'minimal',
-  },
-
   plugins: [
     ...baseConfig.plugins,
 
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
   ],
 });

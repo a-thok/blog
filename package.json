@@ -8,10 +8,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node server",
-    "heroku-postbuild": "npm run staticGenerate & npm run build",
-    "staticGenerate": "babel-node --presets env --plugins inferno build/staticGenerator",
-    "build": "webpack --config build/webpack.prod",
-    "dev": "concurrently \"webpack-dev-server --hot --inline\" \"nodemon server\""
+    "heroku-postbuild": "npm run build",
+    "html": "babel-node --presets env --plugins inferno build/staticGenerator",
+    "prebuild": "rm -rf dist",
+    "build": "webpack --config build/webpack.prod --hide-modules",
+    "postbuild": "npm run html"
   },
   "keywords": [],
   "author": "Victor",

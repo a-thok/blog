@@ -61,6 +61,21 @@ server.get('/json/sentence', (req, res) => {
   });
 });
 
+if (process.env.NODE_ENV !== 'production') {
+  /* eslint-disable global-require, import/no-extraneous-dependencies */
+  const webpack = require('webpack');
+  const webpackDevMiddleware = require('webpack-dev-middleware');
+  const webpackHotMiddleware = require('webpack-hot-middleware');
+  const config = require('./build/webpack.dev');
+
+  const compiler = webpack(config);
+  server.use(webpackDevMiddleware(compiler, {
+    publicPath: config.output.publicPath,
+    stats: 'minimal',
+  }));
+  server.use(webpackHotMiddleware(compiler));
+}
+
 
 server.listen(process.env.PORT || 4000, (err) => {
   if (err) {
