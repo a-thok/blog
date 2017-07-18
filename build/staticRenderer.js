@@ -1,5 +1,4 @@
 /** @jsx Inferno */
-/* eslint-disable import/no-extraneous-dependencies */
 import hook from 'css-modules-require-hook';
 import Inferno from 'inferno';
 import InfernoServer from 'inferno-server';
@@ -9,7 +8,7 @@ import template from './template';
 hook({
   extensions: ['.css'],
   camelCase: true,
-  generateScopedName: '[name]__[local]',
+  generateScopedName: process.env.NODE_ENV === 'production' ? '[local][hash:base64:5]' : '[name]__[local]--[hash:base64:5]',
 });
 
 const createRoutes = require('../src/createRoutes').default;

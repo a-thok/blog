@@ -1,7 +1,5 @@
-/* eslint-disable import/no-extraneous-dependencies */
 const webpack = require('webpack');
 const baseConfig = require('./webpack.base');
-const cssLoader = require('./cssLoader');
 
 module.exports = Object.assign({}, baseConfig, {
   entry: {
@@ -17,7 +15,20 @@ module.exports = Object.assign({}, baseConfig, {
 
       {
         test: /\.css$/,
-        use: ['style-loader', cssLoader, 'postcss-loader'],
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              importLoaders: 1,
+              module: true,
+              camelCase: true,
+              localIdentName: '[name]__[local]--[hash:base64:5]',
+            },
+          },
+          'postcss-loader',
+        ],
         exclude: /node_modules/,
       },
       {
@@ -36,11 +47,14 @@ module.exports = Object.assign({}, baseConfig, {
     ],
   },
 
-  devtool: 'cheap-module-eval-source-map',
+  devtool: '#eval-source-map',
 
   plugins: [
-    ...baseConfig.plugins,
-
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"devlopment"',
+      },
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
   ],
