@@ -1,9 +1,8 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import path from 'path';
 import fs from 'fs';
 import marked from 'marked';
 import Prism from 'prismjs';
-import staticRender from './staticRender';
+import staticRenderer from './staticRenderer';
 import { defaultState, PER_PAGE } from '../src/constants';
 
 marked.setOptions({
@@ -12,7 +11,7 @@ marked.setOptions({
   },
 });
 
-const pagePath = filename => path.resolve('public', `${filename}.html`);
+const pagePath = filename => path.resolve('dist', `${filename}.html`);
 
 export const parsePost = (name, postString) => {
   const matches = postString.match(/---([\s\S]+)---\s+([\s\S]+)/m);
@@ -27,7 +26,7 @@ export const parsePost = (name, postString) => {
 };
 
 export const generatePostsJsonData = (posts) => {
-  fs.writeFileSync('data/posts.json', JSON.stringify(posts, null, 2));
+  fs.writeFileSync('db/posts.json', JSON.stringify(posts, null, 2));
 };
 
 /* eslint-disable no-param-reassign */
@@ -53,7 +52,7 @@ export const generatePostPage = (post) => {
   const { title, name } = post;
   const url = `/blog/${name}`;
 
-  const htmlString = staticRender({ state, title, url });
+  const htmlString = staticRenderer({ state, title, url });
   fs.writeFileSync(pagePath(name), htmlString);
 };
 
@@ -75,7 +74,7 @@ export const generatePostListPage = ([tag, list]) => {
     const title = 'blog - A Talk To Me';
     const url = '/blog';
 
-    const htmlString = staticRender({ state, title, url });
+    const htmlString = staticRenderer({ state, title, url });
     fs.writeFileSync(pagePath(`blog-${tag}-${page}`), htmlString);
 
     page += 1;
@@ -83,7 +82,7 @@ export const generatePostListPage = ([tag, list]) => {
 };
 
 export const generateIndexPage = () => {
-  const htmlString = staticRender({
+  const htmlString = staticRenderer({
     state: defaultState,
     title: 'A Talk To Me',
     url: '/',
@@ -92,7 +91,7 @@ export const generateIndexPage = () => {
 };
 
 export const generateAboutPage = () => {
-  const htmlString = staticRender({
+  const htmlString = staticRenderer({
     state: defaultState,
     title: 'About - A Talk To Me',
     url: '/about',

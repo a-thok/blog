@@ -62,7 +62,7 @@ exports.setSecurityHeaders = (req, res, next) => {
 };
 
 const getData = (filename) => {
-  const filePath = path.resolve('data', filename);
+  const filePath = path.resolve('db', filename);
   return JSON.parse(fs.readFileSync(filePath));
 };
 const sentences = getData('sentences.json');

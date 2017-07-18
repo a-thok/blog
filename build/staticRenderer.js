@@ -14,7 +14,7 @@ hook({
 
 const createRoutes = require('../src/createRoutes').default;
 
-export default function staticRender({ state, title, url }) {
+export default function staticRenderer({ state, title, url }) {
   const routes = createRoutes(state);
   const renderProps = match(routes, url);
   const staticString = InfernoServer.renderToString(<RouterContext {...renderProps} />);

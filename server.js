@@ -4,27 +4,25 @@ const bodyParser = require('body-parser');
 const compression = require('compression');
 const helpers = require('./helpers');
 
-const publicDir = path.resolve('public');
-
 const server = express();
+const DIST_PATH = path.resolve('dist');
 
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 server.use(compression());
 server.use(helpers.setSecurityHeaders);
-server.use(express.static(publicDir, { extensions: ['html'] }));
-server.use(express.static(path.resolve('dist')));
-
+server.use(express.static(DIST_PATH, { extensions: ['html'] }));
+server.use(express.static(path.resolve('public')));
 
 // static routes
 server.get('/blog', (req, res) => {
   const { tag = '', page = 1 } = req.query;
   const filename = `blog-${tag || 'all'}-${page}.html`;
-  res.sendFile(filename, { root: publicDir });
+  res.sendFile(filename, { root: DIST_PATH });
 });
 
 server.get('/blog/:name', (req, res) => {
-  res.sendFile(`${req.params.name}.html`, { root: publicDir });
+  res.sendFile(`${req.params.name}.html`, { root: DIST_PATH });
 });
 
 // json routes
