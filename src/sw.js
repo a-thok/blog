@@ -1,4 +1,4 @@
-const CACHE_NAME = 'A-TALK-TO-ME-V3';
+const CACHE_NAME = 'A-TALK-TO-ME-V4';
 const urlsToCache = [
   '/',
   '/style.css',
