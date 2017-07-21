@@ -16,12 +16,6 @@
     min-height: 100vh;
   }
 
-  @-moz-document url-prefix() {
-    .app {
-      grid-template-rows: 1fr auto;
-    }
-  }
-
   .main {
     grid-area: main;
   }

@@ -15,6 +15,7 @@
 
 /* title */
 .title {
+  flex: auto;
   position: relative;
   display: block;
   margin-right: auto;
