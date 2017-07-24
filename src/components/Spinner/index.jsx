@@ -1,11 +1,10 @@
 /** @jsx Inferno */
 import Inferno from 'inferno';
-import { SvgIcon } from '..';
 import styles from './spinner.css';
 
 const Spinner = () => (
   <div className={styles.spinner}>
-    <SvgIcon name="spinner" />
+    <svg><use xlinkHref="#icon-spinner" /></svg>
   </div>
 );
 

@@ -2,7 +2,7 @@
 import Inferno from 'inferno';
 import Component from 'inferno-component';
 import { Link } from 'inferno-router';
-import { Spinner, SvgIcon } from '../../components';
+import { Spinner } from '../../components';
 import styles from './post.css';
 
 // TODO: IE cannot handle chinese characters in url?
@@ -156,9 +156,9 @@ class Post extends Component {
                 <header className={styles.header}>
                   <h1 className={styles.title}>{post.title}</h1>
                   <section className={styles.meta}>
-                    <SvgIcon name="calendar" />
+                    <svg><use xlinkHref="#icon-calendar" /></svg>
                     <time>{post.date}</time>
-                    <SvgIcon name="tag" />
+                    <svg><use xlinkHref="#icon-tag" /></svg>
                     {post.tags ? (
                       <ul className={styles.tags}>
                         {

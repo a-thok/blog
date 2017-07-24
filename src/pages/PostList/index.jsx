@@ -2,7 +2,7 @@
 import Inferno from 'inferno';
 import Component from 'inferno-component';
 import { Link } from 'inferno-router';
-import { Spinner, SvgIcon } from '../../components';
+import { Spinner } from '../../components';
 import styles from './post-list.css';
 
 class PostList extends Component {
@@ -83,7 +83,7 @@ class PostList extends Component {
               title="上一页"
               onClick={() => this.handlePager(tag, prevPage)}
             >
-              <SvgIcon name="arrow-left" />
+              <svg><use xlinkHref="#icon-arrow-left" /></svg>
               <span>上一页</span>
             </Link>
           ) : null}
@@ -95,7 +95,7 @@ class PostList extends Component {
               onClick={() => this.handlePager(tag, nextPage)}
               title="下一页"
             >
-              <SvgIcon name="arrow-right" />
+              <svg><use xlinkHref="#icon-arrow-right" /></svg>
               <span>下一页</span>
             </Link>
           ) : null}
