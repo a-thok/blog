@@ -144,6 +144,7 @@ class Post extends Component {
   }
 
   render() {
+    /* eslint-disable react/no-danger */
     const { post, update } = this.props;
     const isSpinning = !post.title && this.state.fetching;
 
