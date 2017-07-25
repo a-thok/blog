@@ -14,7 +14,7 @@ const readFileAsPromise = filename => new Promise((resolve, reject) => {
   });
 });
 
-const POST_DIR_PATH = path.resolve('src/posts');
+const POST_DIR_PATH = path.resolve('db/posts');
 const filenames = fs.readdirSync(POST_DIR_PATH);
 
 Promise.all(
