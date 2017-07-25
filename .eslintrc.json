@@ -3,6 +3,11 @@
   "env": {
     "browser": true
   },
+  "settings": {
+    "react": {
+      "pragma": "Inferno"
+    }
+  },
   "rules": {
     "react/prop-types": 0,
     "react/sort-comp": 0,

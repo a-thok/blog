@@ -1,4 +1,3 @@
-/** @jsx Inferno */
 import Inferno from 'inferno';
 import { Link, IndexLink } from 'inferno-router';
 import styles from './header.css';

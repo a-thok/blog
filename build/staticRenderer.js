@@ -1,4 +1,3 @@
-/** @jsx Inferno */
 import hook from 'css-modules-require-hook';
 import Inferno from 'inferno';
 import InfernoServer from 'inferno-server';
