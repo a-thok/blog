@@ -15,7 +15,6 @@ class List extends Component {
     };
   }
 
-
   componentDidMount() {
     document.title = 'Blog - A Talk To Me';
     const { tag = '', page = 1 } = this.props.params;
@@ -25,8 +24,8 @@ class List extends Component {
   // TODO: what about the browser back button? it doesn't trigger an update
   componentWillReceiveProps(nextProps) {
     const { page, tag } = nextProps.params;
-    const isPageChanged = page != null && page !== this.props.params.page;
-    const isTagChanged = tag != null && tag !== this.props.params.tag;
+    const isPageChanged = page !== this.props.params.page;
+    const isTagChanged = tag !== this.props.params.tag;
     if (isPageChanged || isTagChanged) {
       this.fetchData(page, tag);
     }
