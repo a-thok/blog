@@ -1,33 +1,16 @@
 import path from 'path';
 import fs from 'fs';
-import marked from 'marked';
-import Prism from 'prismjs';
+import { createStore } from 'redux';
+import rootReducer from '../src/store/reducers';
 import staticRenderer from './staticRenderer';
-import { defaultState, PER_PAGE } from '../src/constants';
 
-marked.setOptions({
-  highlight(code, lang) {
-    return Prism.highlight(code, Prism.languages[lang]);
-  },
-});
-
-const pagePath = filename => path.resolve('dist', `${filename}.html`);
-
-export const parsePost = (name, postString) => {
-  const matches = postString.match(/---([\s\S]+)---\s+([\s\S]+)/m);
-
-  const meta = JSON.parse(matches[1]);
-  const content = marked(matches[2]).replace(
-    /<pre><code class="lang-(\w+)">/g,
-    '<pre class="language-$1" data-lang="$1"><code class="language-$1">',
-  );
-
-  return ({ name, ...meta, content });
-};
-
-export const generatePostsJsonData = (posts) => {
-  fs.writeFileSync('db/posts.json', JSON.stringify(posts, null, 2));
-};
+const DIST_PATH = path.resolve('dist');
+try {
+  fs.statSync(DIST_PATH);
+} catch (e) {
+  fs.mkdirSync(DIST_PATH);
+}
+const pagePath = filename => path.resolve(DIST_PATH, `${filename}.html`);
 
 /* eslint-disable no-param-reassign */
 export const getPostListsByTag = (posts) => {
@@ -47,54 +30,56 @@ export const getPostListsByTag = (posts) => {
   return result;
 };
 
-export const generatePostPage = (post) => {
-  const state = { ...defaultState, post };
+export const generatePost = (post) => {
+  const store = createStore(rootReducer, { post });
   const { title, name } = post;
   const url = `/blog/${name}`;
 
-  const htmlString = staticRenderer({ state, title, url });
+  const htmlString = staticRenderer({ store, title, url });
   fs.writeFileSync(pagePath(name), htmlString);
 };
 
-export const generatePostListPage = ([tag, list]) => {
-  const pages = Math.ceil(list.length / PER_PAGE);
+export const generateList = ([tag, allPosts]) => {
+  const PER_PAGE = 5;
   let page = 1;
+  const total = allPosts.length;
 
-  while (list.length) {
-    const posts = list
+  while (allPosts.length) {
+    const posts = allPosts
       .splice(0, PER_PAGE)
       .map(({ name, title, date }) => ({ name, title, date }));
 
-    const state = {
-      ...defaultState,
-      posts,
-      pages,
-      page,
-    };
+    const store = createStore(rootReducer, { list: { posts, page, total, tag } });
     const title = 'blog - A Talk To Me';
     const url = '/blog';
 
-    const htmlString = staticRenderer({ state, title, url });
-    fs.writeFileSync(pagePath(`blog-${tag}-${page}`), htmlString);
+    fs.writeFileSync(
+      pagePath(`blog-${tag}-${page}`),
+      staticRenderer({ store, title, url }),
+    );
 
     page += 1;
   }
 };
 
-export const generateIndexPage = () => {
-  const htmlString = staticRenderer({
-    state: defaultState,
-    title: 'A Talk To Me',
-    url: '/',
-  });
-  fs.writeFileSync(pagePath('index'), htmlString);
+export const generateHome = () => {
+  fs.writeFileSync(
+    pagePath('index'),
+    staticRenderer({
+      store: createStore(rootReducer),
+      title: 'A Talk To Me',
+      url: '/',
+    }),
+  );
 };
 
-export const generateAboutPage = () => {
-  const htmlString = staticRenderer({
-    state: defaultState,
-    title: 'About - A Talk To Me',
-    url: '/about',
-  });
-  fs.writeFileSync(pagePath('about'), htmlString);
+export const generateAbout = () => {
+  fs.writeFileSync(
+    pagePath('about'),
+    staticRenderer({
+      store: createStore(rootReducer),
+      title: 'About - A Talk To Me',
+      url: '/about',
+    }),
+  );
 };

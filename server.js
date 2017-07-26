@@ -29,14 +29,14 @@ server.get('/blog/:name', (req, res) => {
 server.get('/json/blog', (req, res) => {
   const { tag = '', page = 1 } = req.query;
 
-  const { posts, pages } = helpers.getPosts(tag, +page);
+  const { posts, total } = helpers.getPosts(tag, +page);
 
   res.status(200).send({
     success: true,
     result: {
       posts,
       tag,
-      pages,
+      total,
       page: +page,
     },
   });
@@ -47,17 +47,17 @@ server.get('/json/blog/:name', (req, res) => {
 
   res.status(200).send({
     success: true,
-    result: { post },
+    result: post,
   });
 });
 
-server.get('/json/sentence', (req, res) => {
-  const sentence = helpers.getRandomSentence();
+server.get('/json/talk', (req, res) => {
+  const talk = helpers.getRandomTalk();
 
   res.header('Cache-Control', 'no-cache');
   return res.status(200).send({
     success: true,
-    result: { sentence },
+    result: talk,
   });
 });
 

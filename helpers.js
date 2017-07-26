@@ -1,7 +1,6 @@
 const path = require('path');
 const fs = require('fs');
 const csp = require('helmet-csp');
-const { PER_PAGE } = require('./src/constants');
 
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -65,15 +64,16 @@ const getData = (filename) => {
   const filePath = path.resolve('db', filename);
   return JSON.parse(fs.readFileSync(filePath));
 };
-const sentences = getData('sentences.json');
+const talks = getData('talks.json');
 const posts = getData('posts.json');
 
-exports.getRandomSentence = () => {
-  const randomIndex = Math.ceil(Math.random() * sentences.length);
-  return sentences[randomIndex];
+exports.getRandomTalk = () => {
+  const randomIndex = Math.ceil(Math.random() * talks.length);
+  return talks[randomIndex];
 };
 
 exports.getPosts = (tag, page) => {
+  const PER_PAGE = 5;
   const startIndex = PER_PAGE * (page - 1);
   const endIndex = startIndex + PER_PAGE;
 
@@ -85,7 +85,7 @@ exports.getPosts = (tag, page) => {
 
   return ({
     posts: postsByPage,
-    pages: Math.ceil(postsByTag.length / PER_PAGE),
+    total: postsByTag.length,
   });
 };
 

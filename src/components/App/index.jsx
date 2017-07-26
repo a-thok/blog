@@ -4,13 +4,11 @@ import { Header, Offline } from '..';
 import styles from './app.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       onLine: true,
     };
-
-    this.update = this.update.bind(this);
   }
 
   componentDidMount() {
@@ -21,8 +19,7 @@ class App extends Component {
 
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker
-        .addEventListener('message', (({ data }) => {
-          const { success, result } = data;
+        .addEventListener('message', (({ data: { success, result } }) => {
           if (success) {
             this.setState({ ...this.state, ...result });
           }
@@ -30,24 +27,18 @@ class App extends Component {
     }
   }
 
-  update(updates) {
-    this.setState({ ...this.state, ...updates });
+  componentDidUpdate() {
+    window.scrollTo(0, 0);
   }
 
   render() {
-    const { children, params, ...initialState } = this.props;
-
-    const Main = children ? Inferno.cloneVNode(children, {
-      ...initialState,
-      ...this.state,
-      update: this.update,
-    }) : null;
-
     return (
       <div className={styles.app}>
         {this.state.onLine ? null : <Offline />}
         <Header />
-        <div className={styles.main}>{Main}</div>
+        <div className={styles.main}>
+          {this.props.children}
+        </div>
       </div>
     );
   }

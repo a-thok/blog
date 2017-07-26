@@ -44,10 +44,11 @@ self.addEventListener('fetch', (event) => {
     if (contentType.indexOf('application/json') !== -1) {
       res.clone()
         .json()
-        .then(data => self.clients.matchAll()
-        .then(all =>
-          all.map(client => client.postMessage(data)),
-        ));
+        .then(data =>
+          self.clients.matchAll().then(all =>
+            all.map(client => client.postMessage(data)),
+          ),
+        );
     }
 
     const clonedRes = res.clone();

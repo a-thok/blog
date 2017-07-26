@@ -1,17 +1,20 @@
 import 'normalize.css';
-import 'prismjs/themes/prism-okaidia.css';
+import 'prism-themes/themes/prism-atom-dark.css';
 import Inferno from 'inferno';
 import { Router } from 'inferno-router';
+import { Provider } from 'inferno-redux';
 import createBrowserHistory from 'history/createBrowserHistory';
-import createRoutes from './createRoutes';
+import routes from './routes';
+import store from './store';
 import './style.css';
 
-/* eslint-disable react/no-deprecated, no-underscore-dangle */
 const browserHistory = createBrowserHistory();
-const routes = createRoutes(window.__INITIAL_STATE__);
 
+// eslint-disable-next-line
 Inferno.render((
-  <Router history={browserHistory}>
-    {routes}
-  </Router>
+  <Provider store={store}>
+    <Router history={browserHistory}>
+      {routes}
+    </Router>
+  </Provider>
 ), document.getElementById('root'));
