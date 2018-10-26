@@ -2,7 +2,7 @@ import Inferno from 'inferno';
 import InfernoServer from 'inferno-server';
 import { RouterContext, match } from 'inferno-router';
 import { Provider } from 'inferno-redux';
-import hook from 'css-modules-require-hook';
+import hook from 'css-modules-require-hook'; // eslint-disable-line
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -28,7 +28,7 @@ const template = ({ title, preloadedState, html }) => (
   <meta name="author" content="阿托">
   <link rel="manifest" href="/manifest.json">
   <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i" rel="stylesheet">
-  ${isProd ? '<link href="/style.css" rel="stylesheet">' : ''}
+  ${isProd ? '<link href="/app.css" rel="stylesheet">' : ''}
   <!--[if lt IE 9]>
   <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <![endif]-->${isProd ? `\n<script>

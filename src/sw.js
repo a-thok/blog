@@ -1,7 +1,7 @@
 const CACHE_NAME = 'A-TALK-TO-ME-V4';
 const urlsToCache = [
   '/',
-  '/style.css',
+  '/app.css',
   '/app.js',
 ];
 
