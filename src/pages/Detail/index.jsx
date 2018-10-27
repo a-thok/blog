@@ -7,31 +7,6 @@ import { fetchPost } from '../../store/reducers/post';
 
 // TODO: IE cannot handle chinese characters in url?
 class Detail extends Component {
-  static loadComments() {
-    if (window.DISQUS) {
-      window.DISQUS.reset({
-        reload: true,
-        config() {
-          this.page.identifier = this.props.post.title;
-          this.page.url = location.origin + location.pathname;
-        },
-      });
-    } else {
-      /* eslint-disable */
-      window.disqus_config = function () {
-      this.page.identifier = this.props.post.title;
-      this.page.url = location.href + location.pathname;
-      };
-      (function() { // DON'T EDIT BELOW THIS LINE
-      var d = document, s = d.createElement('script');
-      s.src = '//atalktome.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', String(Date.now()));
-      (d.head || d.body).appendChild(s);
-      })();
-    /* eslint-enable */
-    }
-  }
-
   constructor() {
     super();
     this.state = {
@@ -49,11 +24,38 @@ class Detail extends Component {
     this.props.dispatch(fetchPost(this.props.match.params.name))
       .then(() => this.setState({ fetching: false }))
       .then(() => this.setUtterance())
-      .then(() => Detail.loadComments());
+      .then(() => this.loadComments());
   }
 
   setUtterance() {
     this.setState({ utterance: 'speechSynthesis' in window });
+  }
+
+  loadComments() {
+    const { title } = this.props.post;
+
+    if (window.DISQUS) {
+      window.DISQUS.reset({
+        reload: true,
+        config() {
+          this.page.identifier = title;
+          this.page.url = location.origin + location.pathname;
+        },
+      });
+    } else {
+      /* eslint-disable */
+      window.disqus_config = function () {
+      this.page.identifier = title;
+      this.page.url = location.href + location.pathname;
+      };
+      (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = '//atalktome.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', String(Date.now()));
+      (d.head || d.body).appendChild(s);
+      })();
+    /* eslint-enable */
+    }
   }
 
   /* eslint-disable react/no-danger */
