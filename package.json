@@ -7,7 +7,7 @@
     "start": "node server",
     "heroku-postbuild": "npm run build",
     "staticize": "node staticize",
-    "prebuild": "rm -rf dist/index",
+    "prebuild": "rm -rf dist",
     "build": "webpack --mode=production",
     "postbuild": "npm run staticize",
     "lint": "eslint --ext .js,.jsx ./"
