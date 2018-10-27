@@ -1,5 +1,6 @@
-import Inferno from 'inferno';
-import Component from 'inferno-component';
+import { Component } from 'inferno';
+import { Route } from 'inferno-router';
+import * as pages from '../../pages';
 import { Header, Offline } from '..';
 import styles from './app.css';
 
@@ -37,7 +38,10 @@ class App extends Component {
         {this.state.onLine ? null : <Offline />}
         <Header />
         <div className={styles.main}>
-          {this.props.children}
+          <Route exact path="/" component={pages.Home} />
+          <Route exact path="/blog" component={pages.List} />
+          <Route path="/blog/:name" component={pages.Detail} />
+          <Route path="/about" component={pages.About} />
         </div>
       </div>
     );

@@ -1,5 +1,4 @@
-import Inferno from 'inferno';
-import Component from 'inferno-component';
+import { Component } from 'inferno';
 import { Link } from 'inferno-router';
 import { connect } from 'inferno-redux';
 import { Spinner, Pager } from '../../components';
@@ -17,22 +16,22 @@ class List extends Component {
 
   componentDidMount() {
     document.title = 'Blog - A Talk To Me';
-    const { tag = '', page = 1 } = this.props.params;
-    this.fetchData(page, tag);
+    this.fetchData(this.props.location.search);
   }
 
-  // TODO: what about the browser back button? it doesn't trigger an update
-  componentWillReceiveProps(nextProps) {
-    const { page, tag } = nextProps.params;
-    const isPageChanged = page !== this.props.params.page;
-    const isTagChanged = tag !== this.props.params.tag;
-    if (isPageChanged || isTagChanged) {
-      this.fetchData(page, tag);
+  componentDidUpdate(prevProps) {
+    const { search } = this.props.location;
+    if (search !== prevProps.location.search) {
+      this.fetchData(search);
     }
   }
 
-  fetchData(page, tag) {
+  fetchData(search) {
     this.setState({ fetching: true });
+
+    const query = new URLSearchParams(search);
+    const page = +(query.get('page') || '1');
+    const tag = query.get('tag') || '';
     this.props.dispatch(fetchList(page, tag))
       .then(() => this.setState({ fetching: false }));
   }
@@ -41,7 +40,7 @@ class List extends Component {
     this.props.dispatch(updatePost({ title }));
   }
 
-  render({ posts, ...others }, { fetching }) {
+  render({ posts, page, tag, total }, { fetching }) {
     return (
       <div className={styles.wrapper}>
         { fetching ? <Spinner /> : null }
@@ -61,7 +60,11 @@ class List extends Component {
           ))}
         </ul>
 
-        <Pager {...others} />
+        <Pager
+          page={page}
+          total={total}
+          tag={tag}
+        />
       </div>
     );
   }

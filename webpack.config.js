@@ -76,6 +76,9 @@ module.exports = (env, { mode }) => {
 
     resolve: {
       extensions: ['.js', '.jsx'],
+      alias: isProd ? {} : {
+        inferno: `${__dirname}/node_modules/inferno/dist/index.dev.esm.js`,
+      },
     },
 
     devtool: isProd ? 'source-map' : 'eval-source-map',

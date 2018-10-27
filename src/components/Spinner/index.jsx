@@ -1,4 +1,3 @@
-import Inferno from 'inferno';
 import styles from './spinner.css';
 
 const Spinner = () => (

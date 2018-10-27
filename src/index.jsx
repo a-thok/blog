@@ -1,20 +1,18 @@
 import 'normalize.css';
 import 'prism-themes/themes/prism-atom-dark.css';
-import Inferno from 'inferno';
-import { Router } from 'inferno-router';
+import * as Inferno from 'inferno';
+import { hydrate } from 'inferno-hydrate';
+import { BrowserRouter } from 'inferno-router';
 import { Provider } from 'inferno-redux';
-import createBrowserHistory from 'history/createBrowserHistory';
-import routes from './routes';
 import store from './store';
+import { App } from './components';
 import './style.css';
 
-const browserHistory = createBrowserHistory();
-
 // eslint-disable-next-line
-Inferno.render((
+hydrate((
   <Provider store={store}>
-    <Router history={browserHistory}>
-      {routes}
-    </Router>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>
 ), document.getElementById('root'));

@@ -1,4 +1,3 @@
-import Inferno from 'inferno';
 import { Link } from 'inferno-router';
 import styles from './pager.css';
 
@@ -25,7 +24,10 @@ export default function Pager({ page, total, tag }) {
       {hasNextPage ? (
         <Link
           className={styles.next}
-          to={`/blog?tag=${tag}&page=${nextPage}`}
+          to={{
+            pathname: '/blog',
+            search: `?tag=${tag}&page=${nextPage}`,
+          }}
           title="下一页"
         >
           <svg><use xlinkHref="#icon-arrow-right" /></svg>

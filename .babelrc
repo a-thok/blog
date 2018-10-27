@@ -1,9 +1,9 @@
 {
   "presets": [
-    ["env", { "modules": false }]
+    ["@babel/env", { "modules": false }]
   ],
   "plugins": [
       ["inferno", { "imports": true }],
-      "transform-object-rest-spread"
+      "@babel/plugin-proposal-object-rest-spread"
     ]
 }

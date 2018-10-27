@@ -1,6 +1,6 @@
-import Inferno from 'inferno';
-import InfernoServer from 'inferno-server';
-import { RouterContext, match } from 'inferno-router';
+import * as Inferno from 'inferno';
+import { renderToString } from 'inferno-server';
+import { StaticRouter } from 'inferno-router';
 import { Provider } from 'inferno-redux';
 import hook from 'css-modules-require-hook'; // eslint-disable-line
 
@@ -12,9 +12,9 @@ hook({
   generateScopedName: isProd ? '[local][hash:base64:5]' : '[name]__[local]--[hash:base64:5]',
 });
 
-const routes = require('../src/routes').default;
+const App = require('../src/components/App').default;
 
-const template = ({ title, preloadedState, html }) => (
+const template = ({ title, state, html }) => (
   `<!DOCTYPE html>
 <!--[if IE 8]><html lang="cmn-hans" data-ie="8"><![endif]-->
 <!--[if IE 9]><html lang="cmn-hans" data-ie="9"><![endif]-->
@@ -39,7 +39,7 @@ const template = ({ title, preloadedState, html }) => (
     }
   </script>` : ''}
   <script>
-    var __INITIAL_STATE__ = ${JSON.stringify(preloadedState)}
+    var __INITIAL_STATE__ = ${JSON.stringify(state)}
   </script>
   <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Object.assign,Promise,fetch,Map,WeakMap,Set" defer></script>
   <script src="/app.js" defer></script>
@@ -76,10 +76,11 @@ const template = ({ title, preloadedState, html }) => (
 
 /* eslint-disable react/jsx-filename-extension */
 export default function staticRenderer({ store, title, url }) {
-  const renderProps = match(routes, url);
-  const html = InfernoServer.renderToString(
+  const html = renderToString(
     <Provider store={store}>
-      <RouterContext {...renderProps} />
+      <StaticRouter location={url} context={{}}>
+        <App />
+      </StaticRouter>
     </Provider>,
   );
   return template({ title, state: store.getState(), html });

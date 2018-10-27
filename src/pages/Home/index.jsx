@@ -1,5 +1,4 @@
-import Inferno from 'inferno';
-import Component from 'inferno-component';
+import { Component } from 'inferno';
 import { connect } from 'inferno-redux';
 import { Spinner } from '../../components';
 import { fetchTalk } from '../../store/reducers/talk';

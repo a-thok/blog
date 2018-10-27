@@ -1,5 +1,4 @@
-import Inferno from 'inferno';
-import Component from 'inferno-component';
+import { Component } from 'inferno';
 import { Link } from 'inferno-router';
 import { connect } from 'inferno-redux';
 import { Spinner, UtterButton } from '../../components';
@@ -47,7 +46,7 @@ class Detail extends Component {
   }
 
   fetchPost() {
-    this.props.dispatch(fetchPost(this.props.params.name))
+    this.props.dispatch(fetchPost(this.props.match.params.name))
       .then(() => this.setState({ fetching: false }))
       .then(() => this.setUtterance())
       .then(() => Detail.loadComments());
