@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import { createStore } from 'redux';
 import rootReducer from '../src/store/reducers';
-import staticRenderer from './staticRenderer';
+import render from './render';
 
 const DIST_PATH = path.resolve('dist');
 try {
@@ -35,7 +35,7 @@ export const generatePost = (post) => {
   const { title, name } = post;
   const url = `/blog/${name}`;
 
-  const htmlString = staticRenderer({ store, title, url });
+  const htmlString = render({ store, title, url });
   fs.writeFileSync(pagePath(name), htmlString);
 };
 
@@ -59,7 +59,7 @@ export const generateList = ([tag, allPosts]) => {
 
     fs.writeFileSync(
       pagePath(`blog-${tag}-${page}`),
-      staticRenderer({ store, title, url }),
+      render({ store, title, url }),
     );
 
     page += 1;
@@ -69,7 +69,7 @@ export const generateList = ([tag, allPosts]) => {
 export const generateHome = () => {
   fs.writeFileSync(
     pagePath('index'),
-    staticRenderer({
+    render({
       store: createStore(rootReducer),
       title: 'A Talk To Me',
       url: '/',
@@ -80,7 +80,7 @@ export const generateHome = () => {
 export const generateAbout = () => {
   fs.writeFileSync(
     pagePath('about'),
-    staticRenderer({
+    render({
       store: createStore(rootReducer),
       title: 'About - A Talk To Me',
       url: '/about',

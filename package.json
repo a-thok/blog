@@ -6,10 +6,10 @@
   "scripts": {
     "start": "node server",
     "heroku-postbuild": "npm run build",
-    "html": "babel-node --presets @babel/env --plugins inferno build/staticGenerator",
-    "prebuild": "rm -rf dist",
+    "staticize": "node staticize",
+    "prebuild": "rm -rf dist/index",
     "build": "webpack --mode=production",
-    "postbuild": "npm run html",
+    "postbuild": "npm run staticize",
     "lint": "eslint --ext .js,.jsx ./"
   },
   "keywords": [],
@@ -33,9 +33,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
-    "@babel/node": "^7.0.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
+    "@babel/register": "^7.0.0",
     "babel-loader": "^8.0.4",
     "babel-plugin-inferno": "^6.0.2",
     "css-loader": "^1.0.0",
