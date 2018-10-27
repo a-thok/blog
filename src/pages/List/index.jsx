@@ -2,7 +2,7 @@ import { Component } from 'inferno';
 import { Link } from 'inferno-router';
 import { connect } from 'inferno-redux';
 import { Spinner, Pager } from '../../components';
-import { fetchList } from '../../store/reducers/list';
+import { fetchList, resetList } from '../../store/reducers/list';
 import { updatePost } from '../../store/reducers/post';
 import styles from './list.css';
 
@@ -10,14 +10,16 @@ class List extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fetching: true,
+      fetching: false,
     };
   }
 
   componentDidMount() {
-    const { location } = this.props;
+    const { posts } = this.props;
     document.title = 'Blog - A Talk To Me';
-    this.fetchData(location.search);
+    if (!posts.length) {
+      this.fetchData();
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -27,6 +29,11 @@ class List extends Component {
     }
   }
 
+  componentWillUnmount() {
+    const { dispatch } = this.props;
+    dispatch(resetList());
+  }
+
   fetchData(search) {
     const { dispatch } = this.props;
 
@@ -34,7 +41,7 @@ class List extends Component {
 
     const query = new URLSearchParams(search);
     const page = +(query.get('page') || '1');
-    const tag = query.get('tag') || '';
+    const tag = query.get('tag') || 'all';
     dispatch(fetchList(page, tag))
       .then(() => this.setState({ fetching: false }));
   }
@@ -46,10 +53,7 @@ class List extends Component {
 
   render() {
     const {
-      posts,
-      page,
-      tag,
-      total,
+      posts, page, tag, total,
     } = this.props;
     const { fetching } = this.state;
 

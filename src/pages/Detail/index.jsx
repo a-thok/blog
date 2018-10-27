@@ -3,22 +3,31 @@ import { Link } from 'inferno-router';
 import { connect } from 'inferno-redux';
 import { Spinner, UtterButton } from '../../components';
 import styles from './detail.css';
-import { fetchPost } from '../../store/reducers/post';
+import { fetchPost, resetPost } from '../../store/reducers/post';
 
 // TODO: IE cannot handle chinese characters in url?
 class Detail extends Component {
   constructor() {
     super();
     this.state = {
-      fetching: true,
+      fetching: false,
       utterance: false,
     };
   }
 
   componentDidMount() {
-    const { post: { title } } = this.props;
-    if (title) document.title = title;
-    this.fetchPost();
+    const { post: { title, content } } = this.props;
+    if (title) {
+      document.title = title;
+    }
+    if (!content) {
+      this.fetchPost();
+    }
+  }
+
+  componentWillUnmount() {
+    const { dispatch } = this.props;
+    dispatch(resetPost());
   }
 
   setUtterance() {

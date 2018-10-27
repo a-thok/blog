@@ -77,7 +77,7 @@ exports.getPosts = (tag, page) => {
   const startIndex = PER_PAGE * (page - 1);
   const endIndex = startIndex + PER_PAGE;
 
-  const postsByTag = posts.filter(post => !tag || post.tags.includes(tag));
+  const postsByTag = posts.filter(post => tag === 'all' || post.tags.includes(tag));
 
   const postsByPage = postsByTag
     .slice(startIndex, endIndex)
