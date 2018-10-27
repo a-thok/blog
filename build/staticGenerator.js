@@ -1,12 +1,13 @@
 import fs from 'fs';
 import path from 'path';
-import marked, { Renderer } from 'marked';
+import marked, { Renderer } from 'marked'; // eslint-disable-line
 import Prism from 'prismjs';
 import * as helpers from './helpers';
 
 const renderer = new Renderer();
-renderer.code = (code, lang) =>
-  `<pre class="language-${lang}"><code class="language-${lang}">${Prism.highlight(code, Prism.languages[lang])}</code></pre>`;
+renderer.code = (code, lang) => (
+  `<pre class="language-${lang}"><code class="language-${lang}">${Prism.highlight(code, Prism.languages[lang])}</code></pre>`
+);
 marked.setOptions({ renderer });
 
 const parsePost = (filename, postString) => {

@@ -1,5 +1,5 @@
 .read {
-  composes: btn from '../../style.css';
+  composes: btn from '../../app.css';
   float: right;
   width: 4.6rem;
   font-size: 0.875em;

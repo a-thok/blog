@@ -49,7 +49,11 @@ export const generateList = ([tag, allPosts]) => {
       .splice(0, PER_PAGE)
       .map(({ name, title, date }) => ({ name, title, date }));
 
-    const store = createStore(rootReducer, { list: { posts, page, total, tag } });
+    const store = createStore(rootReducer, {
+      list: {
+        posts, page, total, tag,
+      },
+    });
     const title = 'blog - A Talk To Me';
     const url = '/blog';
 

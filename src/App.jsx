@@ -1,7 +1,7 @@
 import { Component } from 'inferno';
 import { Route } from 'inferno-router';
-import * as pages from '../../pages';
-import { Header, Offline } from '..';
+import * as pages from './pages';
+import { Header, Offline } from './components';
 import styles from './app.css';
 
 class App extends Component {
@@ -22,7 +22,7 @@ class App extends Component {
       navigator.serviceWorker
         .addEventListener('message', (({ data: { success, result } }) => {
           if (success) {
-            this.setState({ ...this.state, ...result });
+            this.setState(state => ({ ...state, ...result }));
           }
         }));
     }
@@ -33,9 +33,11 @@ class App extends Component {
   }
 
   render() {
+    const { onLine } = this.state;
+
     return (
       <div className={styles.app}>
-        {this.state.onLine ? null : <Offline />}
+        {onLine ? null : <Offline />}
         <Header />
         <div className={styles.main}>
           <Route exact path="/" component={pages.Home} />

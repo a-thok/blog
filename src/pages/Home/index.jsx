@@ -18,27 +18,32 @@ class Home extends Component {
   }
 
   fetchData() {
+    const { dispatch } = this.props;
     this.setState({ fetching: true });
-    this.props.dispatch(fetchTalk())
+    dispatch(fetchTalk())
       .then(() => this.setState({ fetching: false }));
   }
 
-  render({ talk }, { fetching }) {
+  render() {
+    const { talk } = this.props;
+    const { fetching } = this.state;
+
     return (
       <div>
         <blockquote className={styles.quote}>
           { fetching ? <Spinner /> : talk }
         </blockquote>
         <button
+          type="button"
           className={styles.btn}
           title="点击切换上方句子"
           onClick={() => this.fetchData()}
-        >随便说说</button>
+        >
+          随便说说
+        </button>
       </div>
     );
   }
 }
 
-export default connect(
-  ({ talk }) => ({ talk }),
-)(Home);
+export default connect(({ talk }) => ({ talk }))(Home);

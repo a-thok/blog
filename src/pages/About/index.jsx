@@ -10,7 +10,8 @@ class About extends Component {
     return (
       <section>
         <h2 className={styles.title}>
-          Victor Loo<small className={styles.profession}>前端工程师</small>
+          Victor Loo
+          <small className={styles.profession}>前端工程师</small>
         </h2>
 
         <section>
@@ -53,7 +54,10 @@ class About extends Component {
           </dl>
         </section>
 
-        <address className={styles.address}><span>联系我：</span>a-thok@outlook.com</address>
+        <address className={styles.address}>
+          <span>联系我：</span>
+          a-thok@outlook.com
+        </address>
       </section>
     );
   }

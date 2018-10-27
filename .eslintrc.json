@@ -3,15 +3,12 @@
   "env": {
     "browser": true
   },
-  "settings": {
-    "react": {
-      "pragma": "Inferno"
-    }
-  },
   "rules": {
+    "react/react-in-jsx-scope": 0,
     "react/prop-types": 0,
-    "react/sort-comp": 0,
-    "react/no-did-mount-set-state": 0,
-    "jsx-a11y/href-no-hash": 0
+    "jsx-a11y/anchor-is-valid": [ "error", {
+      "components": [ "Link" ],
+      "specialLink": [ "to" ]
+    }]
   }
 }

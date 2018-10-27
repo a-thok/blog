@@ -16,30 +16,33 @@ class Detail extends Component {
   }
 
   componentDidMount() {
-    if (this.props.post.title) document.title = this.props.post.title;
+    const { post: { title } } = this.props;
+    if (title) document.title = title;
     this.fetchPost();
-  }
-
-  fetchPost() {
-    this.props.dispatch(fetchPost(this.props.match.params.name))
-      .then(() => this.setState({ fetching: false }))
-      .then(() => this.setUtterance())
-      .then(() => this.loadComments());
   }
 
   setUtterance() {
     this.setState({ utterance: 'speechSynthesis' in window });
   }
 
+  fetchPost() {
+    const { dispatch, match } = this.props;
+    dispatch(fetchPost(match.params.name))
+      .then(() => this.setState({ fetching: false }))
+      .then(() => this.setUtterance())
+      .then(() => this.loadComments());
+  }
+
   loadComments() {
-    const { title } = this.props.post;
+    const { post: { title } } = this.props;
 
     if (window.DISQUS) {
+      const { origin, pathname } = window.location;
       window.DISQUS.reset({
         reload: true,
         config() {
           this.page.identifier = title;
-          this.page.url = location.origin + location.pathname;
+          this.page.url = origin + pathname;
         },
       });
     } else {
@@ -59,7 +62,10 @@ class Detail extends Component {
   }
 
   /* eslint-disable react/no-danger */
-  render({ post }, { fetching, utterance }) {
+  render() {
+    const { post } = this.props;
+    const { fetching, utterance } = this.state;
+
     return (
       <div>
         { fetching ? <Spinner /> : null }
@@ -98,6 +104,4 @@ class Detail extends Component {
   }
 }
 
-export default connect(
-  ({ post }) => ({ post }),
-)(Detail);
+export default connect(({ post }) => ({ post }))(Detail);

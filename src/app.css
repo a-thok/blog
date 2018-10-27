@@ -59,3 +59,31 @@ svg {
   box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.4);
   transform: translate(1px, 1px);
 }
+
+/* App */
+.main {
+  position: relative;
+  width: 100%;
+  max-width: 768px;
+  padding: 0 1em;
+  margin: 2.5em auto 0;
+}
+
+@supports (display: grid) {
+  .app {
+    display: grid;
+    grid-template-areas: "header" "main";
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 100%;
+    justify-items: center;
+    min-height: 100vh;
+  }
+
+  .header {
+    grid-area: header;
+  }
+
+  .main {
+    grid-area: main;
+  }
+}

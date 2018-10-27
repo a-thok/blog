@@ -15,32 +15,44 @@ class List extends Component {
   }
 
   componentDidMount() {
+    const { location } = this.props;
     document.title = 'Blog - A Talk To Me';
-    this.fetchData(this.props.location.search);
+    this.fetchData(location.search);
   }
 
   componentDidUpdate(prevProps) {
-    const { search } = this.props.location;
+    const { location: { search } } = this.props;
     if (search !== prevProps.location.search) {
       this.fetchData(search);
     }
   }
 
   fetchData(search) {
+    const { dispatch } = this.props;
+
     this.setState({ fetching: true });
 
     const query = new URLSearchParams(search);
     const page = +(query.get('page') || '1');
     const tag = query.get('tag') || '';
-    this.props.dispatch(fetchList(page, tag))
+    dispatch(fetchList(page, tag))
       .then(() => this.setState({ fetching: false }));
   }
 
   goToDetail(title) {
-    this.props.dispatch(updatePost({ title }));
+    const { dispatch } = this.props;
+    dispatch(updatePost({ title }));
   }
 
-  render({ posts, page, tag, total }, { fetching }) {
+  render() {
+    const {
+      posts,
+      page,
+      tag,
+      total,
+    } = this.props;
+    const { fetching } = this.state;
+
     return (
       <div className={styles.wrapper}>
         { fetching ? <Spinner /> : null }
@@ -52,7 +64,11 @@ class List extends Component {
                 <time>{post.date}</time>
               </div>
               <div className={styles.itemRight}>
-                <Link className={styles.itemTitle} to={`/blog/${post.name}`} onClick={() => this.goToDetail(post.title)}>
+                <Link
+                  className={styles.itemTitle}
+                  to={`/blog/${post.name}`}
+                  onClick={() => this.goToDetail(post.title)}
+                >
                   <h2>{post.title}</h2>
                 </Link>
               </div>
@@ -71,6 +87,10 @@ class List extends Component {
 }
 
 
-export default connect(
-  ({ list: { posts, page, total, tag } }) => ({ posts, page, total, tag }),
-)(List);
+export default connect(({
+  list: {
+    posts, page, total, tag,
+  },
+}) => ({
+  posts, page, total, tag,
+}))(List);

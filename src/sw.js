@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 const CACHE_NAME = 'A-TALK-TO-ME-V4';
 const urlsToCache = [
   '/',
@@ -44,11 +45,10 @@ self.addEventListener('fetch', (event) => {
     if (contentType.indexOf('application/json') !== -1) {
       res.clone()
         .json()
-        .then(data =>
-          self.clients.matchAll().then(all =>
-            all.map(client => client.postMessage(data)),
-          ),
-        );
+        .then(data => (
+          self.clients.matchAll()
+            .then(all => all.map(client => client.postMessage(data)))
+        ));
     }
 
     const clonedRes = res.clone();

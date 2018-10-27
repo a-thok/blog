@@ -4,8 +4,9 @@ const LOAD = 'talk/LOAD';
 
 export const loadTalk = payload => ({ type: LOAD, payload });
 
-export const fetchTalk = () => dispatch =>
-  api.fetchTalk().then(payload => dispatch(loadTalk(payload)));
+export const fetchTalk = () => dispatch => (
+  api.fetchTalk().then(payload => dispatch(loadTalk(payload)))
+);
 
 export default function talk(state = '', { type, payload }) {
   switch (type) {

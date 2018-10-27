@@ -8,8 +8,9 @@ export const loadPost = payload => ({ type: LOAD, payload });
 export const resetPost = () => ({ type: RESET });
 export const updatePost = payload => ({ type: UPDATE, payload });
 
-export const fetchPost = name => dispatch =>
-  api.fetchPost(name).then(payload => dispatch(loadPost(payload)));
+export const fetchPost = name => dispatch => (
+  api.fetchPost(name).then(payload => dispatch(loadPost(payload)))
+);
 
 const initialState = {
   name: '',

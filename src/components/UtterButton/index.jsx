@@ -13,7 +13,8 @@ export default class UtterButton extends Component {
   }
 
   componentDidMount() {
-    const text = this.props.content.replace(/<[^<>]*>/g, '');
+    const { content } = this.props;
+    const text = content.replace(/<[^<>]*>/g, '');
     const utterance = new SpeechSynthesisUtterance(text);
 
     utterance.addEventListener('start', () => this.setState({ buttonText: '暂停朗读' }));
@@ -46,12 +47,17 @@ export default class UtterButton extends Component {
   }
 
   render() {
+    const { buttonText } = this.state;
+
     return (
       <button
+        type="button"
         className={styles.read}
         aria-hidden="true"
         onClick={this.readPost}
-      >{this.state.buttonText}</button>
+      >
+        {buttonText}
+      </button>
     );
   }
 }

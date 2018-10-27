@@ -51,7 +51,7 @@
 }
 
 .btn {
-  composes: btn from '../../style.css';
+  composes: btn from '../../app.css';
   position: fixed;
   left: 50%;
   bottom: 5%;

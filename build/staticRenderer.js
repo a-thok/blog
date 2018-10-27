@@ -1,4 +1,3 @@
-import * as Inferno from 'inferno';
 import { renderToString } from 'inferno-server';
 import { StaticRouter } from 'inferno-router';
 import { Provider } from 'inferno-redux';
@@ -12,7 +11,7 @@ hook({
   generateScopedName: isProd ? '[local][hash:base64:5]' : '[name]__[local]--[hash:base64:5]',
 });
 
-const App = require('../src/components/App').default;
+const App = require('../src/App').default;
 
 const template = ({ title, state, html }) => (
   `<!DOCTYPE html>
